@@ -1,6 +1,6 @@
 import React from 'react';
 import bishnu from "../assets/bishnu.jpg";
-import petDoctorize from "../assets/about-two.jpg";
+import shoes from "../assets/about-two.jpg";
 
 const AboutContent = (props) => {
   return (
@@ -28,7 +28,7 @@ const AboutContent = (props) => {
                 </div>
                 <div className="col-md-6">
                     <div className="about2-img">
-                        <img src={petDoctorize} alt="pet-doctorize" />
+                        <img src={shoes} alt="pet-doctorize" />
                     </div>
                 </div>
                 <div className="col-md-6">

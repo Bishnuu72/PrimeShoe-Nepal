@@ -533,10 +533,11 @@
 }
 
 .about2-title h3{
-    text-align: center;
     font-weight: 700;
-    margin: 90px 0px 30px 0px;
+    margin: 90px 0px 30px 145px;
 }
+
+
 
 .about2-details p {
     font-size: large;
@@ -546,7 +547,7 @@
 
 .about2-details li {
     margin-bottom: 15px;
-    margin-left: 215px;
+    margin-left: 150px;
     
 }
 
@@ -805,3 +806,48 @@
     margin-top: 20px;
 }
 
+
+
+/* Mobile devices (<= 768px) */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .card, .product, .blog-card {
+    width: 100%;
+  }
+
+  .navbar, .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navbar a, .footer a {
+    margin: 5px 0;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .about2-title h3, .about2-details li {
+    margin-left: 20px;
+  }
+}
+
+/* Tablets (768px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .card, .product, .blog-card {
+    width: 48%;
+  }
+
+  .container {
+    justify-content: space-around;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
