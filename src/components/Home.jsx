@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner from './banner';
+import Banner from './Banner';
 import Card from './card';
 import Form from "./Form";
 import Footer from './Footer';
