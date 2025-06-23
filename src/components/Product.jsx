@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import Card from './card';
+import Card from './Card';
 import ProductContext from '../Context/ProductContext';
 import { useNavigate } from 'react-router-dom';
 import { BsThreeDots } from "react-icons/bs";
