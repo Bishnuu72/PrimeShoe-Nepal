@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.post("/addproduct", fetchUser, async(req, res) => {
     try {
-        const { name, description, price, instock, lifeSpan } = req.body;
-        const product = new Product({name, price, description, instock, lifeSpan, user: user.id});
+        const { name, description, price, instock } = req.body;
+        const product = new Product({name, price, description, instock, user: user.id});
         const saveProduct = await product.save();
         res.status(201).json({saveProduct});
     } catch (error) {
