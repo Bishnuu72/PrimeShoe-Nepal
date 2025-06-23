@@ -1,0 +1,807 @@
+/* Navbar-details */
+.auth-btn {
+    text-decoration: none;
+    color: #000;
+}
+
+.auth-btn:hover {
+    color: #000;
+}
+
+.pet-cart {
+    border: none;
+}
+
+/* Banner Hero Section CSS  */
+.banner-text {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(25, 25, 25, 0.5));
+  padding: 20px 30px;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: auto;
+  color: #fff;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin-left: 0px;
+  margin-bottom: 150px;
+}
+
+.banner-text h5 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+  margin-bottom: 10px;
+}
+
+.banner-text p {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #f0f0f0;
+  line-height: 1.6;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+/* Product Page CSS */
+.product-details {
+    padding-top: 80px;
+    /* background: #1a1a2e; */
+}
+
+.title-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card img {
+    cursor: pointer;
+}
+
+.product-cards {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+
+/* Product Details Page CSS  */
+.productdetails-page {
+    padding: 50px 0px;
+}
+
+.pd-img img {
+    width: 100%;    
+}
+
+.pd-details h3 {
+    text-align: center;
+    text-decoration: underline;
+    /* border-bottom: 2px solid rgb(85, 78, 78); */
+}
+
+.menu-options {
+    position: absolute;
+    top: 110px; /* adjust based on icon size */
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 0.5rem;
+    min-width: 100px;
+}
+
+.menu-options button {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+}
+
+.menu-options button:hover {
+    background-color: #f0f0f0;
+  border-radius: 6px;
+}
+
+.addproduct-details {
+    padding: 50px 0px;
+}
+
+.addproduct-title {
+    text-align: center;
+}
+
+
+
+/* Cart Page CSS */
+.productcontainer-cart h3 {
+    text-align: center;
+    font-family: "papyrus";
+    font-weight: bold;
+    font-size: 50px;
+    padding: 10px 0px;
+}
+
+.head-p {
+    font-family: 'Courier New';
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px 0px;
+}
+
+.cart-p {
+    font-family: 'papyrus';
+    color: #000;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(112, 51, 51);
+}
+
+.product-list {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.cart-title {
+    font-family: 'Courier New';
+    font-weight: bold;
+    font-size: 20px;
+    /* text-align: center; */
+}
+
+.cart-del-icon {
+    color: #fff;
+    font-size: 25px;
+}
+
+.cart-checkbox {
+    display: flex;
+    gap: 20px;
+}
+
+.cart-cb {
+    color: red;
+    font-size: 25px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.cart-title input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.cart-amt {
+    padding-left: 40%;
+
+}
+
+.cart-empty {
+    background: lightgreen;
+}
+
+.cart-empty p {
+    color: #000;
+    padding: 50px 0px;
+    text-align: center;
+    font-family: 'Courier New';
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.grand-summary {
+    padding-left: 80%;
+}
+
+.cart-checkout {
+    margin: 20px 0px;
+}
+
+
+/* Services Page CSS */
+.services-details {
+    padding-top: 50px;
+}
+
+.services-details h3 {
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Courier New';
+}
+
+.services-details p {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: large;
+    font-family: 'papyrus';
+}
+
+.services-icon {
+    margin-top: 30px;
+    padding: 30px 0px 10px 0px;
+    background: rgb(170, 237, 167);
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.services-icon:hover {
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    transition: 0.3s;
+}
+
+.services-icon i {
+    font-size: 40px;
+}
+
+.services-icon p {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Courier New';
+}
+
+/* ServiceDetails Page CSS */
+.service-details {
+    padding: 50px 0px;
+}
+
+.service-details h3 {
+    text-align: center;
+    font-family: 'Courier New';
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 80px;
+    border: 5px solid rgb(48, 45, 45);
+    border-radius: 50px;
+}
+
+
+/* Card Section CSS */
+.card-section{
+    text-align: center;
+    padding: 50px 0px;
+}
+
+.top-row {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.card-btn {
+    border: none;
+    background-color: rgb(18, 189, 204);
+    padding: 3px 10px;
+}
+
+.card-details {
+    padding-bottom: 20px;
+}
+
+
+
+/* Form Section CSS */
+.form-section {
+    padding: 30px 0px;
+}
+
+.form-title {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+
+/* Small-Banner CSS */
+.small-banner {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.page-title {
+    position: absolute;
+    top: 14%;
+    left: 40%;
+    transform: (-50%, -50%);
+    font-size: 50px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    /* background: rgba(0, 0, 0, 0.5); */
+}
+
+
+/* Blog-Page CSS */
+.blog-details {
+    color: black;
+}
+
+
+
+/* Contact-Page CSS */
+.contact-map iframe {
+    width: 100%;
+    height: 300px;
+}
+
+.contacts {
+    padding: 80px 0px 10px 0px;
+}
+
+.contact-details {
+   background: #fff;
+   padding: 20px;
+   border-radius: 10px;
+   margin-bottom: 40px;
+
+}
+
+.contact-name {
+    display: flex;
+    padding-bottom: 18px;
+}
+
+.contact-name p {
+    width: 35%;
+    padding-top: 7px;
+    font-weight: 600;
+}
+
+.cont-name, .cont-Email, .cont-subject {
+    width: 100%;
+}
+
+.contact-Email {
+    display: flex;
+    gap: 43px;
+    padding-bottom: 18px;
+}
+
+.contact-Email p {
+    width: 27%;
+    padding-top: 7px;
+    font-weight: 600;
+}
+
+.contact-subject {
+    display: flex;
+    gap: 48px;
+    padding-bottom: 18px;
+}
+
+.contact-subject p {
+    width: 26%;
+    padding-top: 7px;
+    font-weight: 600;
+}
+
+.contact-message {
+    display: flex;
+    gap: 87px;
+    padding-bottom: 18px;
+}
+
+.contact-message p {
+    width: 21%;
+    padding-top: 7px;
+    font-weight: 600;
+}
+
+.contact-button {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.contact-btn {
+    background: rgb(246, 111, 15);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.contact-email, .contact-phone, .contact-address {
+    background: #fff;
+    margin: 10px 300px 20px 0px;
+    padding: 10px 10px 10px 20px;
+}
+
+.contact-left p {
+    margin-right: 30px;
+}
+
+
+
+/* Footer Section CSS */
+.footer-section {
+    padding-top: 50px;
+}
+
+.footer1-title {
+    margin-bottom: 27px;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.footer1-details a {
+    text-decoration: none;
+}
+
+.footer2-title, .footer3-title, .footer4-title {
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.footer2-subscribe input {
+    margin-bottom: 15px;
+    width: 70%;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.subs-btn {
+    width: 70%;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: 2px solid white;
+}
+
+.footer3-list li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.footer4-list {
+    list-style: none;
+}
+
+.footer4-list li {
+    margin-bottom: 10px;
+}
+
+.footer4-list a {
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.copyright-details {
+    margin-top: 50px;
+    padding: 20px 0px;
+}
+
+.copyright-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-copyright {
+    font-weight:300;
+}
+
+.footer-down {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    font-weight: 500;
+}
+
+.footer-line {
+    color: black;
+    width: 100%
+}
+
+
+/* About Section CSS */
+.about-one {
+    padding-top: 80px;
+}
+
+.about1-img img, .about2-img img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 80px;
+    border: 5px solid rgb(48, 45, 45);
+    border-radius: 50px;
+}
+
+.about2-title h3{
+    text-align: center;
+    font-weight: 700;
+    margin: 90px 0px 30px 0px;
+}
+
+.about2-details p {
+    font-size: large;
+    font-weight: 500;
+
+}
+
+.about2-details li {
+    margin-bottom: 15px;
+    margin-left: 215px;
+    
+}
+
+.about1-title p {
+    /* font-family: papyrus; */
+    font-size: 18px;
+    /* font-weight: bold; */
+}
+
+.about1-title h3 {
+    font-family: 'Courier New';
+    font-weight: bold;
+    font-size: 30px;
+}
+
+
+
+
+/* News Api Section CSS  */
+.card-style {
+    margin-top: 50px;
+    padding: 5px;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-readmore {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 7px 15px;
+    background-color:  #007bff;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    margin-left: 28%;
+}
+
+.card-readmore:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+
+
+/* Registration Page CSS */
+
+/* SignUp Page CSS */
+.one-details {
+    width: 250%;
+    height: 100%;
+    background: linear-gradient(135deg, #6e00ff, #a400ff);
+    color: white;
+    padding: 200px 50px;
+    clip-path: polygon(0 0, 100% 0, 60% 100%, 0% 100%);
+
+}
+
+.two-details {
+    width: 100%;
+    height: 100%;
+    padding: 50px 50px 50px 400px;
+    background-color: #1a1a2e;
+    color: white;
+}
+
+.two-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px ;
+}
+
+.signup-details {
+    padding-top: 50px;
+}
+
+.login-box input, .signup-box input {
+    width: 100%;
+    background: #1a1a2e;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-bottom: 2px solid #ffffff;
+}
+
+.login-btn, .signup-btn {
+    width: 100%;
+    background: #6e00ff;
+    padding: 5px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.acc-login {
+    padding-top: 10px;
+}
+
+.acc-auth {
+    text-decoration: none;
+    color: #fff;
+    padding-left: 5px;
+}
+
+.acc-auth:hover {
+    color: #fff;
+    border-bottom: 2px solid rgb(179, 27, 168);
+    transition: 0.3s;
+}
+
+/* Login Page CSS */
+
+.left-details {
+    width: 250%;
+    height: 100%;
+    padding: 50px;
+    background-color: #1a1a2e;
+    color: white;
+}
+
+.right-details {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #6e00ff, #a400ff);
+    color: white;
+    padding: 100px 50px;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 60% 100%);
+}
+
+.left-title {
+    padding: 10px 0px 50px 150px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.login-details {
+    width: 50%;
+}
+
+.login-btn:hover, .signup-btn:hover {
+    background: #9a5aef;
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.5);
+}
+
+.right-title {
+    padding-top: 50px;
+    padding-left: 300px;
+}
+
+.right-desc {
+    padding-left: 300px;
+    padding-bottom: 126px;
+}
+
+.login-box, .signup-box {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.login-box label, .signup-box label {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    color: #ffffff;
+    pointer-events: none;
+    transition: 0.5s;
+    /* z-index: 1; */
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    color: #ffffff;
+    pointer-events: auto;
+    transition: 0.5s;    
+    /* z-index: 2; */
+    cursor: pointer;
+}
+
+/* .signup-box input, .login-box input {
+    padding-right: 36px;
+    z-index: 0;
+} */
+
+.login-box input:focus ~ label,
+.signup-box input:focus ~ label,
+.login-box input:valid ~ label,
+.signup-box input:valid ~ label
+{
+ top: -10px;
+ color: #fff;
+}
+
+/* .login-box input:focus,
+.signup-box input:focus,
+.login-box input:valid,
+.signup-box input:valid 
+{
+ border-bottom-color: #6e00ff;
+ box-shadow: 0 5px 10px #6e00ff;
+} */
+
+
+
+.product-details img {
+    width: 100%;
+
+}
+
+
+
+/* CompanyForm CSS  */
+.companyForm-details {
+    background: #f9f9f9;
+    padding-top: 50px;
+}
+
+.companyForm-details form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    min-height: 56vh;
+}
+
+.companyForm-details h4 {
+    color: #343a40;
+    padding-left: 10px;
+    border-left: 5px solid #0d6efd;
+    margin-bottom: 20px;
+}
+
+.preview-details {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    margin-top: 50px;
+    min-height: 56vh;
+}
+
+.company-btn {
+    width: 100%;
+}
+
+
+.dogs-card, .cats-card {
+    margin-top: 20px;
+}
+
