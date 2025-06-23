@@ -54,7 +54,7 @@ const Product = ({mode, cardText, cartToggleMode, cartMode}) => {
   }
   return (
     <>
-    <div className="product-details">
+    <div className={`product-details bg-${mode} text-${cardText}`}>
       <div className="container">
       <div className="row">
       {product.map((item) => {
@@ -62,7 +62,7 @@ const Product = ({mode, cardText, cartToggleMode, cartMode}) => {
           <div key={item._id} className="col-md-3">
           <div className="card product-cards">
           <img onClick={()=>handleProducts(item._id, item.name)} src={item.img} className="card-img-top" alt={item.img}/>
-          <div className="card-body">
+          <div className={`card-body bg-${mode} text-${cardText}`}>
             <div className="title-content">
               <h5 className="card-title" onClick={()=>handleProducts(item._id, item.name)}>{item.name}</h5>
               <BsThreeDots className='three-dots-icon' onClick={()=> toggleMenu(item._id)} />

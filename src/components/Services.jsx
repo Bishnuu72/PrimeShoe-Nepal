@@ -4,7 +4,7 @@ import ServicesContext from '../Context/ServicesContext';
 import Footer from './Footer';
 
 
-const Services = () => {
+const Services = (props) => {
   const navigate = useNavigate();
   const services = useContext(ServicesContext);
   console.log("data from servicessss:",services);
@@ -17,7 +17,7 @@ const Services = () => {
 
   return (
     <div>
-      <div className="services-details">
+      <div className={`services-details bg-${props.mode} text-${props.cardText}`}>
         <div className="container">
           <h3>Our Services</h3>
           <p>At Namaste Paws, we believe every pet deserves love, care, and attention. Our mission is to provide top-notch services <br />that ensure your furry friends are happy, healthy, and well-groomed.</p>

@@ -1,7 +1,7 @@
 import React from "react";
 import BlogImg from "../assets/img1.jpg";
 
-const BlogCards = () => {
+const BlogCards = ({mode, cardText}) => {
   const Blogs = [
     {
       id: 1,
@@ -45,10 +45,10 @@ const BlogCards = () => {
                     Blogs.map((item) => {
                         return(
                             <div className="col-md-3">
-                                <div className="card">
+                                <div className={`card bg-${mode} text-${cardText}`}>
                                     <img src={BlogImg} alt="" />
                                     <div className="card-details">
-                                        <h5 className="card-title">{item.title}</h5>
+                                        <h5 className={`card-title bg-${mode} text-${cardText}`}>{item.title}</h5>
                                         <p className="card-text">{item.description}</p>
                                         <button className="card-btn">Read More</button>
                                     </div>

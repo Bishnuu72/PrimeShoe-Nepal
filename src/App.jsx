@@ -104,9 +104,9 @@ function App() {
       
       <ServicesData>
         <Routes>
-          <Route path="/" element={<Home mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} notify={notify} />} />
+          <Route path="/" element={<Home mode={mode} cardText={cardText} textColor={textColor} secColor={secColor} cartToggleMode={cartToggleMode} cartMode={cartMode} notify={notify} />} />
           <Route path="/products" element={<Product mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/services" element={<Services mode={mode} cardText={cardText} />} />
           <Route path="/about" element={<About mode={mode} cardText={cardText} />} />
           <Route path="/blog" element={<Blog mode={mode} cardText={cardText} />} />
           <Route path="/contact" element={<Contact mode={mode} cardText={cardText} textColor={textColor} secColor={secColor} />} />

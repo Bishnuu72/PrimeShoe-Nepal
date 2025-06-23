@@ -11,17 +11,17 @@ import ProductHome from './ProductHome';
 import ServicesHome from './ServicesHome';
 
 
-const Home = ({mode, cardText, cartToggleMode, cartMode, notify, toast }) => {
+const Home = ({mode, cardText, cartToggleMode, cartMode, notify, toast, textColor, secColor }) => {
   return (
     <>
     <Banner />
-    <Services />
-    <Product />
+    <Services mode={mode} cardText={cardText} />
+    <Product mode={mode} cardText={cardText} />
     {/* <Product mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} /> */}
-    <AboutContent />
+    <AboutContent mode={mode} cardText={cardText} />
     {/* <Card mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} /> */}
     {/* <Form mode={mode} cardText={cardText} notify={notify} toast={toast} /> */}
-    <ContactDetails />
+    <ContactDetails mode={mode} cardText={cardText} textColor={textColor} secColor={secColor} />
     </>
   )
 }
