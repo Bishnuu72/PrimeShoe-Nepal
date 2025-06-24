@@ -76,7 +76,7 @@ const ProductState = (props) => {
 
   //Edit Product
   const editProduct = async (id, updateData) => {
-    const {title, description, price, instock, lifeSpan} = updateData;
+    const {title, description, price, instock} = updateData;
     try {
       const response = await fetch(`http://localhost:5000/api/product/updateproduct/${id}`, 
         {
@@ -85,7 +85,7 @@ const ProductState = (props) => {
             "content-Type" : "application/json",
             "auth-token" : "adkhfsksnvkxjn"
           },
-          body: JSON.stringify({title, description, price, instock, lifeSpan})
+          body: JSON.stringify({title, description, price, instock})
         }
       );
       const data = await response.json();

@@ -52,17 +52,6 @@ const EditProductModal = ({product, onClose, onSave}) => {
                   aria-describedby="emailHelp"/>
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="lifeSpan" className="form-label">Life Span</label>
-                  <input 
-                  type="text" 
-                  className="form-control" 
-                  id="lifeSpan"
-                  name='lifeSpan'
-                  value={formData.lifeSpan}
-                  onChange={handleChange}
-                  aria-describedby="emailHelp"/>
-                </div>
-                <div className="mb-3">
                   <label htmlFor="price" className="form-label">Price</label>
                   <input 
                   type="number" 

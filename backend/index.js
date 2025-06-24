@@ -28,7 +28,8 @@ app.get("/chats/:id", (req, res) => {
 })
 
 app.use("/api/auth", require("./routes/Auth"));
-app.use("api/product", require("./routes/Products"));
+app.use("/api/product", require("./routes/Products"));
+app.use("/api/cart", require("./routes/Carts"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

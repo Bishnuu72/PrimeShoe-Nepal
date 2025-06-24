@@ -7,7 +7,6 @@ const AddProduct = () => {
         description: "",
         price: "",
         instock: "",
-        lifeSpan: "",
         image: "",
     });
 
@@ -19,7 +18,6 @@ const AddProduct = () => {
         formData.append("Description", product.description);
         formData.append("Price", product.price);
         formData.append("InStock", product.instock);
-        formData.append("Life Span", product.lifeSpan);
         // formData.append("Image of Form:", product.image);
         if(product.image){
             formData.append("Image", product.image);
@@ -84,16 +82,6 @@ const AddProduct = () => {
                                         id="description" 
                                         name='description' 
                                         value={product.description} 
-                                        onChange={handleChange}
-                                        aria-describedby="emailHelp"/>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="lifeSpan" className="form-label">Life Span</label>
-                                <input type="text" 
-                                        className="form-control" 
-                                        id="lifeSpan" 
-                                        name='lifeSpan' 
-                                        value={product.lifeSpan} 
                                         onChange={handleChange}
                                         aria-describedby="emailHelp"/>
                             </div>

@@ -47,7 +47,7 @@ const CartItems = () => {
                                             <h6>Rs. {item.price}</h6>
                                         </div>
                                         <div className="col-md-2">
-                                            <li>Instock - ({item.instock} pets)</li>
+                                            <li>Instock - ({item.instock} pcs)</li>
                                         </div>
                                         <div className="col-md-1">
                                             <h6>Rs. {item.price}</h6>
