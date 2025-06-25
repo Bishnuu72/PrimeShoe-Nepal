@@ -20,7 +20,7 @@ const Services = (props) => {
       <div className={`services-details bg-${props.mode} text-${props.cardText}`}>
         <div className="container">
           <h3>Our Services</h3>
-          <p>At Namaste Paws, we believe every pet deserves love, care, and attention. Our mission is to provide top-notch services <br />that ensure your furry friends are happy, healthy, and well-groomed.</p>
+          <p>At Prime Shoe Nepal, we don't just sell shoes — we deliver a complete footwear experience. Here's what makes our services stand out:</p>
           <div className="row">
             {services.map((service) =>{
               return(

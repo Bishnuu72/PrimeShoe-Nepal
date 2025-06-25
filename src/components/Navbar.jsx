@@ -13,9 +13,9 @@ const Navbar = ({title, mode, toggleMode, text, loginToggleMode, loginText, logi
     <div className="container-fluid">
     {/* <Link className="navbar-brand" to="/"><img src="/NamastePawsLogo.jpg" alt="Namaste Paws" style={{ height: '80px' }} /></Link> */}
     <Link className="navbar-brand" to="/"><i className="fa-solid fa-paw me-2"></i> {title}</Link>
-    {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
-    </button> */}
+    </button>
 
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
@@ -29,7 +29,7 @@ const Navbar = ({title, mode, toggleMode, text, loginToggleMode, loginText, logi
           <Link className="nav-link" to="/services">Services</Link>
         </li>
         <li className="nav-item mx-2">
-          <Link className="nav-link" to="news">News</Link>
+          <Link className="nav-link" to="/news">News</Link>
         </li>
         <li className="nav-item mx-2">
           <Link className="nav-link" to="/blog">Blogs</Link>

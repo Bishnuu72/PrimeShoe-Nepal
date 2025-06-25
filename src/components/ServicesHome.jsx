@@ -6,7 +6,7 @@ import ServicesContext from '../Context/ServicesContext';
 const ServicesHome = () => {
   const navigate = useNavigate();
   const services = useContext(ServicesContext);
-  console.log("data from servicessss:",services);
+  console.log("data from services:",services);
 
   const handleServices = (serviceId, serviceTitle) => {
     // console.log("you clicked ", serviceTitle);

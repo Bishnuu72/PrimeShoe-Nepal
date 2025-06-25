@@ -1,5 +1,5 @@
 import React from "react";
-import BlogImg from "../assets/img1.jpg";
+import BlogImg from "../assets/blog-shoe.jpg";
 
 const BlogCards = ({mode, cardText}) => {
   const Blogs = [
@@ -7,21 +7,37 @@ const BlogCards = ({mode, cardText}) => {
       id: 1,
       title: "Blog 1",
       description: "This is the first blog post",
+      img: "/blogImages/blog1.jpg",
     },
     {
       id: 2,
       title: "Blog 2",
       description: "This is the second blog post",
+      img: "/blogImages/blog-shoe.jpg",
     },
     {
       id: 3,
       title: "Blog 3",
       description: "This is the third blog post",
+      img: "/blogImages/blog2.jpg",
     },
     {
       id: 4,
       title: "Blog 4",
       description: "This is the fourth blog post",
+      img: "/blogImages/blog3.jpg",
+    },
+    {
+      id: 5,
+      title: "Blog 5",
+      description: "This is the fifth blog post",
+      img: "/blogImages/blog4.jpg",
+    },
+    {
+      id: 6,
+      title: "Blog 6",
+      description: "This is the sixth blog post",
+      img: "/blogImages/blog5.jpg",
     },
   ];
 
@@ -46,7 +62,7 @@ const BlogCards = ({mode, cardText}) => {
                         return(
                             <div className="col-md-3">
                                 <div className={`card bg-${mode} text-${cardText}`}>
-                                    <img src={BlogImg} alt="" />
+                                    <img src={item.img} alt="" />
                                     <div className="card-details">
                                         <h5 className={`card-title bg-${mode} text-${cardText}`}>{item.title}</h5>
                                         <p className="card-text">{item.description}</p>
