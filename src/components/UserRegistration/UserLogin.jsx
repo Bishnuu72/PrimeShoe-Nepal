@@ -5,6 +5,7 @@ const UserLogin = () => {
 
   const [showPassword, setShowPassword] = React.useState(false);
   const navigate = useNavigate();
+
   const [credential, setCredential] = React.useState({
     email: "",
     password: "",
@@ -20,13 +21,15 @@ const UserLogin = () => {
       },
       body: JSON.stringify({email, password}),
     })
+
     const data = await response.json();
-    if(data.success){
-      localStorage.setItem("token", "xyz");
+    console.log("Signin backend res", data)
+    if(response.ok && data.authToken){
+      localStorage.setItem("token", data.authToken);
       navigate("/");
     }
     else {
-      alert("Invalid Credentials");
+      alert("Invalid Credentials. Try Again");
     }
 
     console.log("Login form is submitted");
@@ -34,7 +37,7 @@ const UserLogin = () => {
 
   const handleChange = (e) => {
     setCredential({...credential, [e.target.name]:e.target.value})
-  }
+  };
   return (
     <div className='container'>
       <div className="row">

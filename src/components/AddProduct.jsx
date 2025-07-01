@@ -12,7 +12,7 @@ const AddProduct = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log("Form submitted successfully!")
+        console.log("Form submit")
         const formData = new FormData();
         formData.append("Name", product.name);
         formData.append("Description", product.description);
@@ -20,15 +20,15 @@ const AddProduct = () => {
         formData.append("InStock", product.instock);
         // formData.append("Image of Form:", product.image);
         if(product.image){
-            formData.append("Image", product.image);
+            formData.append("image", product.image);
         }
         try {
-            const response = axios.post("http://localhost:3001/api/products", formData,{
+            const response = axios.post("http://localhost:5000/api/product/addproduct", formData,{
                 headers: {
-                    "content-Type" : "multipart/form-data",
-                    "auth-token" : "1234567890"
+                    // "content-Type" : "multipart/form-data",
+                    "auth-token" : localStorage.getItem("token"),
                 }
-            })
+            });
             const data = await response.json();
             console.log("Post data",data);
             if (response) {

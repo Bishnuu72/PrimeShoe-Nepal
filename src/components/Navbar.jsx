@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import ProductContext from '../Context/ProductContext'
 
@@ -7,6 +7,22 @@ const Navbar = ({title, mode, toggleMode, text, loginToggleMode, loginText, logi
   const context = useContext(ProductContext);
   const { state:{cart}} = context;
   console.log("Navbar-Cart", cart);
+  const navigate = useNavigate();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    navigate("/signup");
+  };
+
+
   return (
     <div>
     <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode} py-3`}>
@@ -63,7 +79,17 @@ const Navbar = ({title, mode, toggleMode, text, loginToggleMode, loginText, logi
       </Link>
       <button onClick={toggleMode} className={`btn mode-btn text-${loginMode}`}>{text}</button>
       <button type='button' onClick={loginToggleMode} className={`btn notify-btn text-${loginMode}`}>{loginText}</button>
-      <Link className={`auth-btn text-${loginMode}`} to="/signup">Sign Up</Link>
+
+      {
+        isLoggedIn ? (
+          <button type='button' onClick={handleLogout} className='auth-btn'>Logout</button>
+        ) : (
+          <Link className={`auth-btn text-${loginMode}`} to="/signup">Sign Up</Link>
+        )
+      }
+
+
+      
     </div>
   </div>
 </nav>

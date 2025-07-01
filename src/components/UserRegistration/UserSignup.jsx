@@ -14,7 +14,7 @@ const UserSignup = () => {
       cpassword: "",
     });
     
-  
+    
     const handleSubmit = async(e) => {
       e.preventDefault();
 
@@ -27,7 +27,7 @@ const UserSignup = () => {
         })
         return;
       }
-      const response = await fetch(`${BACKEND_URL}/api/auth/createuser`, {
+      const response = await fetch("http://localhost:5000/api/auth/createuser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,15 +35,16 @@ const UserSignup = () => {
         body: JSON.stringify({name, email, password}),
       })
       const data = await response.json();
-      if(data.success){
-        localStorage.setItem("token", "xyz");
+      console.log("Signup backend res", data);
+      if(data){
+        localStorage.setItem("token", data.authToken);
         navigate("/login");
       }
       else {
         alert("Invalid Credentials");
       }
   
-      console.log("Login form is submitted");
+      console.log("Signup form is submitted");
     };
   
     const handleChange = (e) => {

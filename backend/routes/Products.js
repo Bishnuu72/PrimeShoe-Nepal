@@ -2,7 +2,7 @@ const express = require("express");
 const Product = require("../model/Product");
 const fetchUser = require("../middleware/FetchUser");
 const { body, validationResult } = require("express-validator");
-const { route } = require("./Carts");
+const { route } = require("./Carts");   
 const router = express.Router();
 
 
@@ -34,25 +34,29 @@ router.post("/addproduct", fetchUser,
      async(req, res) => {
     try {
         const { name, description, price, instock } = req.body;
+        console.log("this from frontend", req.body);
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({errors: errors.array()});
         }
-        const product = new Product({name, price, description, instock, user: req.user.id});
+        let image = req.files.map((el) => {
+            return el.filename;
+        })
+        const product = new Product({name, price, image, description, instock, user: req.user.id});
         const saveProduct = await product.save();
         res.status(201).json({saveProduct});
     } catch (error) {
         console.log(error.message);
-        res.status(500).json({ error: "Internal Server Error    "});
+        res.status(500).json({ error: "Internal Server Error"});
     }
 })
 
 //update product
 router.put("/updateproduct/:id", fetchUser, async(req, res) => {
-    const {title, description, price, instock} = req.body;
+    const {name, description, price, instock} = req.body;
     try {
         const newProduct = {}
-        if(title) newProduct.title = title
+        if(name) newProduct.name = name
         if(description) newProduct.description = description
         if(price) newProduct.price = price
         if(instock) newProduct.instock = instock

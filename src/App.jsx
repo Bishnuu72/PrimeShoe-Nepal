@@ -61,11 +61,11 @@ function App() {
 
   const loginToggleMode = () => {
     if (loginText === "Notify") {
-      setLoginText("Done");
+      setLoginText("Un-Notify");
      toast("Notify Successfully!"); 
     }else {
       setLoginText("Notify");
-      toast("Done Successfully!");
+      toast("Un-Notify Successfully!");
     }
   };
 

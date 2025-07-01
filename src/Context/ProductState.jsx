@@ -4,7 +4,7 @@ import { cartReducer } from './Reducer';
 
 const ProductState = (props) => {
   // const BACKEND_URL = process.env.BACKEND_URL;
-  const BACKEND_URL = import.meta.env.BACKEND_URL;
+  // const BACKEND_URL = import.meta.env.BACKEND_URL;
 
   const products = [
     {
@@ -58,7 +58,7 @@ const ProductState = (props) => {
   
   const allProduct = async () => {
     try {
-      const response = await fetch(`${BACKEND_URL}/api/product/getproduct`,{
+      const response = await fetch("`${BACKEND_URL}/api/product/getproduct`",{
         method: "GET",
         headers: {
           "Content-Type" : "application/json",
