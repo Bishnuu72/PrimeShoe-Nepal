@@ -39,7 +39,7 @@ const CartItems = () => {
                                     <div className="row">
                                         <div className="col-md-1 cart-title"><input type="checkbox" /></div>
                                         <div className="col-md-2 mb-3 cart-img">
-                                            <img src={item.img} style={{width:"100%", height:"100%"}} alt={item.name} />
+                                            <img src={item.image?.[0] ? `http://localhost:5000/uploads/${item.image[0]}` : "/imagenotfind.jpg"} style={{width:"100%", height:"100%"}} alt={item.name} />
                                         </div>
                                         <div className="col-md-3">
                                             <h5>{item.name}</h5>

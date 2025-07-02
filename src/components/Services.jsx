@@ -24,13 +24,11 @@ const Services = (props) => {
           <div className="row">
             {services.map((service) =>{
               return(
-                <>
               <div key={service._id} className="col-md-3" onClick={() =>handleServices(service._id, service.title)}>
               <div className="services-icon">
                 <i className={service.icon}></i> <p>{service.title}</p>
               </div>
               </div>
-            </>
               )
             })}
           </div>

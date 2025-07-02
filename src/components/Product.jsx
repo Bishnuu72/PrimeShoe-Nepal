@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import Card from './Card';
+// import Card from './Card';
 import ProductContext from '../Context/ProductContext';
 import { useNavigate } from 'react-router-dom';
 import { BsThreeDots } from "react-icons/bs";
@@ -20,28 +20,28 @@ const Product = ({mode, cardText, cartToggleMode, cartMode}) => {
     console.log("togge menu id is:", id);
     setMenuVisible((prevState) => ({
       ...prevState, [id] : !prevState[id],
-    }))
-  }
+    }));
+  };
 
   const closeEditModal = () => {
     setModalVisible(false);
     setSelectedProduct(null);
-  }
+  };
 
   const saveEdit = (updateData) => {
-    console.log("Save edit Product::", updateData);
+    console.log("Save edit Product", updateData);
     editProduct(selectedProduct._id, updateData);
-  }
+  };
 
-  const handleDelete = (id) => {
+  const handleDelete = async(id) => {
     console.log("Delete item is", id)
-    deleteProduct(id);
+    await deleteProduct(id);
   };
 
   const openEditModal = (product) => {
     setSelectedProduct(product);
+    console.log("Editing product is", product);
     setModalVisible(true);
-    console.log("Editing product is:::", product)
   }
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const Product = ({mode, cardText, cartToggleMode, cartMode}) => {
         return(
           <div key={item._id} className="col-md-3">
           <div className="card product-cards">
-          <img onClick={()=>handleProducts(item._id, item.name)} src={item.img} className="card-img-top" alt={item.img}/>
+          <img onClick={()=>handleProducts(item._id, item.name)} src={item.image?.[0] ? `http://localhost:5000/uploads/${item.image[0]}` : "/imagenotfound.jpg"} className="card-img-top" alt="Product Image"/>
           <div className={`card-body bg-${mode} text-${cardText}`}>
             <div className="title-content">
               <h5 className="card-title" onClick={()=>handleProducts(item._id, item.name)}>{item.name}</h5>

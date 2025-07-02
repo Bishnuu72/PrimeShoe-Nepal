@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react'
+import React, { useReducer } from 'react'
 import ProductContext from './ProductContext'
 import { cartReducer } from './Reducer';
 
@@ -58,41 +58,41 @@ const ProductState = (props) => {
   
   const allProduct = async () => {
     try {
-      const response = await fetch("`${BACKEND_URL}/api/product/getproduct`",{
+      const response = await fetch(`http://localhost:5000/api/product/allhomeproduct`,{
         method: "GET",
         headers: {
           "Content-Type" : "application/json",
-          "auth-token" : "asdfghjkluihgisivdvdaodjsa",
+          "auth-token" : localStorage.getItem("token"),
         },
       });
       const data = await response.json();
       setProduct(data);
-      console.log("Data from backend:", data);
+      console.log("Data from backend response", data);
     } catch (error) {
-      console.log(error);
+      console.log("error: ", error);
       // res.status(500).send("Internal Server Error");
     }
   };
 
   //Edit Product
   const editProduct = async (id, updateData) => {
-    const {title, description, price, instock} = updateData;
+    const {name, description, price, instock} = updateData;
     try {
       const response = await fetch(`http://localhost:5000/api/product/updateproduct/${id}`, 
         {
           method: "PUT",
           headers: {
             "content-Type" : "application/json",
-            "auth-token" : "adkhfsksnvkxjn"
+            "auth-token" : localStorage.getItem("token"),
           },
-          body: JSON.stringify({title, description, price, instock})
+          body: JSON.stringify({name, description, price, instock})
         }
       );
       const data = await response.json();
-      console.log("data from backend response", data);
+      console.log("edited data", data);
       allProduct();
     } catch (error) {
-      console.log("Internal server error", error)
+      console.log("Internal server error", error);
       throw new Error("Failed to update product");
     }
   }
@@ -100,11 +100,11 @@ const ProductState = (props) => {
   //Delete Product
   const deleteProduct = async (id) => {
     try {
-      const response = await fetch(`http://localhost:500/api/product/deleteproduct/${id}`,{
+      const response = await fetch(`http://localhost:5000/api/product/deleteproduct/${id}`,{
         method: "DELETE",
         headers: {
           "content-Type" : "application/json",
-          "auth-token" : "kfjsdbfaldjkfnac"
+          "auth-token" : localStorage.getItem("token"),
         }
       });
       if (!response.ok) {
@@ -112,12 +112,13 @@ const ProductState = (props) => {
       }
       const data = await response.json();
       console.log("data deleted", data);
+      allProduct();
     } catch (error) {
       console.log("Error",error);
       throw new Error("Failed to delete product");
       
     }
-  }
+  };
 
   return (
     <ProductContext.Provider value={{product, setProduct, state, dispatch, allProduct, editProduct, deleteProduct}}>

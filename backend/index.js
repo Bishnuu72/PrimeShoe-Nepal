@@ -18,7 +18,7 @@ console.log(port);
 
 app.get('/system', (req, res) => {
   res.send('Hello This is ------> Apna System')
-})
+});
 
 // Ensure the uploads directory exists
 const ensureUploadsDirectoryExists = () => {
@@ -57,8 +57,8 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
 app.use("/api/auth", require("./routes/Auth"));
 app.use("/api/product", upload.array("image"), require("./routes/Products"));
-app.use("/api/cart", require("./routes/Carts"));
+// app.use("/api/cart", require("./routes/Carts"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});

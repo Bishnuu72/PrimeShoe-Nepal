@@ -14,11 +14,10 @@ const AddProduct = () => {
         e.preventDefault();
         console.log("Form submit")
         const formData = new FormData();
-        formData.append("Name", product.name);
-        formData.append("Description", product.description);
-        formData.append("Price", product.price);
-        formData.append("InStock", product.instock);
-        // formData.append("Image of Form:", product.image);
+        formData.append("name", product.name);
+        formData.append("description", product.description);
+        formData.append("price", product.price);
+        formData.append("instock", product.instock);
         if(product.image){
             formData.append("image", product.image);
         }
@@ -30,7 +29,7 @@ const AddProduct = () => {
                 }
             });
             const data = await response.json();
-            console.log("Post data",data);
+            console.log("Post data", data);
             if (response) {
                 alert("Product Added Successfully!");
             } else {
@@ -87,11 +86,21 @@ const AddProduct = () => {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="price" className="form-label">Price</label>
-                                <input type="text" 
+                                <input type="number" 
                                         className="form-control" 
                                         id="price" 
                                         name='price' 
                                         value={product.price} 
+                                        onChange={handleChange}
+                                        aria-describedby="emailHelp"/>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="instock" className="form-label">Instock</label>
+                                <input type="number" 
+                                        className="form-control" 
+                                        id="instock" 
+                                        name='instock' 
+                                        value={product.instock} 
                                         onChange={handleChange}
                                         aria-describedby="emailHelp"/>
                             </div>
