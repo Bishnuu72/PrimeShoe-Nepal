@@ -4,9 +4,12 @@
     color: #000;
 }
 
-.auth-btn:hover {
-    color: #000;
+.profile-btn {
+    font-size: large;
+    margin-left: 20px;
 }
+
+
 
 .pet-cart {
     border: none;
@@ -850,4 +853,46 @@
   h1 {
     font-size: 2rem;
   }
+}
+
+
+/* Profile Dashboard CSS */
+.profile-section {
+    padding: 50px 0px;
+    /* background: rgb(212, 199, 199); */
+}
+
+.profile-section h4 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 50px;
+}
+
+.profile-img {
+    margin-left: 200px;
+}
+
+.profile-img img {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border: 2px solid #000;
+}
+
+.profile-main {
+    margin-left: 50px;
+    margin-top: 40px;
+    line-height: 10px;
+}
+
+.profile-name {
+    font-weight: bold;
+}
+
+.profile-products {
+    margin-top: 40px;
+    /* line-height: 10px; */
 }

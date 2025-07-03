@@ -27,6 +27,7 @@ import CompanyForm from './components/CompanyForm.jsx';
 import Blog1 from './components/Blog1.jsx';
 import Dogs from './components/Dogs.jsx';
 import Cats from './components/Cats.jsx';
+import Profile from './components/Dashboard/Profile.jsx';
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -123,6 +124,7 @@ function App() {
           <Route path="/blog1" element={<Blog1 />} />
           <Route path="/dogs" element={<Dogs />} />
           <Route path="/cats" element={<Cats />} />
+          <Route path="/profile" element={<Profile />} />
       </Routes>
       </ServicesData>
       <Footer mode={mode} cardText={cardText} />

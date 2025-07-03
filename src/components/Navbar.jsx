@@ -66,6 +66,7 @@ const Navbar = ({title, mode, toggleMode, text, loginToggleMode, loginText, logi
       <button onClick={toggleMode} className={`btn mode-btn text-${loginMode}`}>{text}</button>
       <button type='button' onClick={loginToggleMode} className={`btn notify-btn text-${loginMode}`}>{loginText}</button>
       <Link className={`auth-btn text-${loginMode}`} to="/signup">Sign Up</Link>
+      <Link className={`profile-btn text-${loginMode}`} to="/profile"><i class="fa-solid fa-user"></i></Link>
       
     </div>
   </div>
