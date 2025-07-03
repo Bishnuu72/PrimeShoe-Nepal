@@ -93,4 +93,25 @@ router.get("/getuser", fetchUser, async(req, res) => {
     }
 })
 
+
+// Update User
+router.put('/updateuser', fetchUser, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { name, email } = req.body;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { name, email },
+      { new: true, runValidators: true }
+    ).select("-password");
+
+    res.status(200).json({ message: "Profile updated", updatedUser });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Update failed" });
+  }
+});
+
+
 module.exports = router;
