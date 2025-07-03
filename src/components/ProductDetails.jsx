@@ -27,7 +27,7 @@ const ProductDetails = () => {
             </div>
             <div className="col-md-6">
               <div className="pd-img">
-                <img src={items.img} alt={items.name} />
+                <img src={items.image?.[0] ? `http://localhost:5000/uploads/${items.image[0]}` : "/imagenotfound.jpg"} alt={items.image} />
               </div>
             </div>
           </div>

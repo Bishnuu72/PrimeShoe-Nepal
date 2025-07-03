@@ -28,6 +28,7 @@ import Blog1 from './components/Blog1.jsx';
 import Dogs from './components/Dogs.jsx';
 import Cats from './components/Cats.jsx';
 import Profile from './components/Dashboard/Profile.jsx';
+import SearchResult from './components/SearchResult.jsx';
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -125,6 +126,7 @@ function App() {
           <Route path="/dogs" element={<Dogs />} />
           <Route path="/cats" element={<Cats />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/search/:searchQuery" element={<SearchResult mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} />} />
       </Routes>
       </ServicesData>
       <Footer mode={mode} cardText={cardText} />

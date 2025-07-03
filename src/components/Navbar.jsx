@@ -1,13 +1,30 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import ProductContext from '../Context/ProductContext'
 
 const Navbar = ({title, mode, toggleMode, text, loginToggleMode, loginText, loginMode}) => {
   const context = useContext(ProductContext);
+  const navigate = useNavigate();
+
+  const [searchQuery, setSearchQuery] = useState("");
+
   const { state:{cart}} = context;
   console.log("Navbar-Cart", cart);
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if(searchQuery.trim()){
+      navigate(`/search/${searchQuery}`)
+    }else {
+      alert("Product Not Found");
+      navigate("/");
+    }
+  }
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   return (
     <div>
@@ -54,6 +71,22 @@ const Navbar = ({title, mode, toggleMode, text, loginToggleMode, loginText, logi
           </ul>
         </li>
       </ul>
+
+      <form onSubmit={handleSearchSubmit} className="d-flex">
+          <input
+            className="form-control me-2"
+            type="search"
+            name="searchQuery"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button className="btn btn-outline-success" type="submit">
+                Search
+          </button>
+        </form>
+
       <Link to="/cartitems">
       <button type="button" className={`btn btn-primary mx-3 position-relative bg-${mode} text-${loginMode} pet-cart`}>
         <i className="fa-solid fa-cart-shopping"></i>

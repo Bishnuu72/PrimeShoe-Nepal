@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 // import Card from './Card';
 import ProductContext from '../Context/ProductContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { BsThreeDots } from "react-icons/bs";
 import EditProductModal from './EditProductModal';
 
@@ -10,6 +10,8 @@ import EditProductModal from './EditProductModal';
 const Product = ({mode, cardText, cartToggleMode, cartMode}) => {
   const navigate = useNavigate();
   const context = useContext(ProductContext);
+  const params = useParams();
+  const {searchQuery} = params;
   const { product, state:{cart, products}, dispatch, allProduct, editProduct, deleteProduct } = context;
   
   const [menuVisible, setMenuVisible] = useState(false);
@@ -45,8 +47,8 @@ const Product = ({mode, cardText, cartToggleMode, cartMode}) => {
   }
 
   useEffect(() => {
-    allProduct();
-  }, []);
+    allProduct(searchQuery);
+  }, [searchQuery]);
 
   const handleProducts = (itemId, itemName, price) => {
     console.log("You clicked", itemName);
