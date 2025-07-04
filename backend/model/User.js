@@ -5,6 +5,9 @@ const userSchema = new Schema ({
     name: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
+    address: { type: String },
+    profileImage: { type: String }, // Base64 format
+
     date: { type: Date, default: Date.now}
 })
 
