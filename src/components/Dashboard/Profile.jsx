@@ -22,6 +22,11 @@ const Profile = () => {
           address: res.data.address || ''
         });
       } catch (err) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Fetch Error',
+          text: 'Could not fetch user data'
+        });
         console.error('Fetch user failed', err);
       }
     };
@@ -33,7 +38,34 @@ const Profile = () => {
   };
 
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
+    const file = e.target.files[0];
+    if (!file) return;
+
+    Swal.fire({
+      title: 'Upload Image?',
+      text: `${file.name} will be used as your new profile image.`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Save',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setImage(file);
+        Swal.fire({
+          icon: 'success',
+          title: 'Image Selected',
+          text: 'Click "Update" to save the image with profile.'
+        });
+      } else {
+        e.target.value = ''; // clear input
+        setImage(null);
+        Swal.fire({
+          icon: 'info',
+          title: 'Cancelled',
+          text: 'No image was selected.'
+        });
+      }
+    });
   };
 
   const handleUpdate = async () => {
@@ -51,17 +83,27 @@ const Profile = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
+
       setUser(res.data.updatedUser);
       setEditing(false);
       setImage(null);
-      alert('Profile updated successfully');
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Profile Updated',
+        text: 'Your profile has been successfully updated.'
+      });
+
     } catch (err) {
       console.error('Update failed', err);
-      alert('Something went wrong!');
+      Swal.fire({
+        icon: 'error',
+        title: 'Update Failed',
+        text: 'Something went wrong while updating your profile.'
+      });
     }
   };
 
-  // ✅ NEW: Handle image deletion
   const handleDeleteImage = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -73,10 +115,18 @@ const Profile = () => {
         }
       );
       setUser(res.data.updatedUser);
-      alert('Profile image deleted');
+      Swal.fire({
+        icon: 'success',
+        title: 'Image Deleted',
+        text: 'Your profile image has been removed.'
+      });
     } catch (err) {
       console.error('Failed to delete image', err);
-      alert('Failed to delete image');
+      Swal.fire({
+        icon: 'error',
+        title: 'Delete Failed',
+        text: 'Could not delete profile image.'
+      });
     }
   };
 
@@ -84,7 +134,7 @@ const Profile = () => {
     <div className="container mt-4">
       <h4 className="text-center mb-4">My Profile</h4>
       <div className="row align-items-center mb-5">
-        <div className="col-md-3 text-center">
+        <div className="col-md-3 text-center position-relative">
           {image || user.profileImage ? (
             <>
               <img
@@ -97,30 +147,41 @@ const Profile = () => {
                 className="img-fluid rounded-circle border"
                 style={{ width: 200, height: 200, objectFit: 'cover' }}
               />
-              {/* ✅ Show delete button if image is present */}
-              {user.profileImage && !image && (
-                <button className="btn btn-danger mt-2" onClick={handleDeleteImage}>
-                  Delete Profile Image
+              <div className="d-flex justify-content-center mt-2 gap-2">
+                <label htmlFor="uploadImg" className="btn btn-sm btn-warning">
+                  <i className="fa-solid fa-image"></i>
+                </label>
+                <input
+                  id="uploadImg"
+                  type="file"
+                  hidden
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
+                <button className="btn btn-sm btn-danger" onClick={handleDeleteImage}>
+                  <i className="fa-solid fa-trash"></i>
                 </button>
-              )}
+              </div>
             </>
           ) : (
-            // ✅ Show first letter of name in a circle with background
-            <div
-              className="rounded-circle d-flex justify-content-center align-items-center bg-secondary text-white fw-bold mx-auto"
-              style={{ width: 200, height: 200, fontSize: 72 }}
-            >
-              {user.name?.charAt(0).toUpperCase() || 'U'}
-            </div>
-          )}
-
-          {editing && (
-            <input
-              type="file"
-              className="form-control mt-2"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
+            <>
+              <div
+                className="rounded-circle d-flex justify-content-center align-items-center bg-secondary text-white fw-bold mx-auto"
+                style={{ width: 200, height: 200, fontSize: 72 }}
+              >
+                {user.name?.charAt(0).toUpperCase() || 'U'}
+              </div>
+              <label htmlFor="uploadImg" className="btn btn-outline-dark mt-2">
+                <i className="fa-solid fa-camera"></i> Upload
+              </label>
+              <input
+                id="uploadImg"
+                type="file"
+                hidden
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+            </>
           )}
         </div>
 
