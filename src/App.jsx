@@ -29,6 +29,8 @@ import Dogs from './components/Dogs.jsx';
 import Cats from './components/Cats.jsx';
 import Profile from './components/Dashboard/Profile.jsx';
 import SearchResult from './components/SearchResult.jsx';
+import ForgotPassword from './components/UserRegistration/ForgotPassword.jsx';
+import ResetPassword from './components/UserRegistration/ResetPassword.jsx';
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -127,6 +129,9 @@ function App() {
           <Route path="/cats" element={<Cats />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/search/:searchQuery" element={<SearchResult mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
+
       </Routes>
       </ServicesData>
       <Footer mode={mode} cardText={cardText} />

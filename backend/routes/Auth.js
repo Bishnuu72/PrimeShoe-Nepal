@@ -6,7 +6,9 @@ const { body, validationResult } = require("express-validator");
 const fetchUser = require("../middleware/FetchUser");
 const router = express.Router();
 
-//NEW: multer for image uploads
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
+
 const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -19,15 +21,11 @@ router.post("/createuser", [
   body("email").isEmail().withMessage("Please enter a valid email"),
 ], async (req, res) => {
   const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
   try {
     let user = await User.findOne({ email: req.body.email });
-    if (user) {
-      return res.status(400).json({ message: "User already exists" });
-    }
+    if (user) return res.status(400).json({ message: "User already exists" });
 
     const salt = bcrypt.genSaltSync(10);
     const secPassword = bcrypt.hashSync(req.body.password, salt);
@@ -38,11 +36,7 @@ router.post("/createuser", [
       password: secPassword,
     });
 
-    const data = {
-      user: {
-        id: user._id,
-      }
-    };
+    const data = { user: { id: user._id } };
     const authToken = jwt.sign(data, secret);
 
     res.status(201).json({ message: "User created successfully!", user, authToken });
@@ -52,35 +46,24 @@ router.post("/createuser", [
   }
 });
 
-
 // ================= LOGIN ===================
 router.post("/login", [
   body("email").isEmail().withMessage("Please enter a valid email"),
-  body("password").isLength({ min: 5 }).withMessage("Password must be at least of 5 characters"),
+  body("password").isLength({ min: 5 }).withMessage("Password must be at least 5 characters"),
 ], async (req, res) => {
   const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
   const { email, password } = req.body;
 
   try {
     let user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ message: "Email not found" });
-    }
+    if (!user) return res.status(400).json({ message: "Email not found" });
 
     const passwordCompare = await bcrypt.compare(password, user.password);
-    if (!passwordCompare) {
-      return res.status(400).json({ message: "Password Not Matched" });
-    }
+    if (!passwordCompare) return res.status(400).json({ message: "Password Not Matched" });
 
-    const data = {
-      user: {
-        id: user._id,
-      },
-    };
+    const data = { user: { id: user._id } };
     const authToken = jwt.sign(data, secret);
 
     res.status(201).json({ message: "Login Successful", user, authToken });
@@ -90,8 +73,7 @@ router.post("/login", [
   }
 });
 
-
-// ================= GET LOGGED IN USER ===================
+// ================= GET USER ===================
 router.get("/getuser", fetchUser, async (req, res) => {
   try {
     const userId = req.user.id;
@@ -103,19 +85,14 @@ router.get("/getuser", fetchUser, async (req, res) => {
   }
 });
 
-
-// =================UPDATED: UPDATE USER WITH IMAGE & ADDRESS ===================
+// ================= UPDATE USER PROFILE ===================
 router.put("/updateuser", fetchUser, upload.single("profileImage"), async (req, res) => {
   try {
     const userId = req.user.id;
     const { name, email, address } = req.body;
 
     const updateFields = { name, email, address };
-
-    //If image is uploaded, store as Base64
-    if (req.file) {
-      updateFields.profileImage = req.file.buffer.toString("base64");
-    }
+    if (req.file) updateFields.profileImage = req.file.buffer.toString("base64");
 
     const updatedUser = await User.findByIdAndUpdate(
       userId,
@@ -130,8 +107,7 @@ router.put("/updateuser", fetchUser, upload.single("profileImage"), async (req, 
   }
 });
 
-//DELETE profile image
-router.put('/delete-profile-image', fetchUser, async (req, res) => {
+router.put("/delete-profile-image", fetchUser, async (req, res) => {
   try {
     const userId = req.user.id;
     const updatedUser = await User.findByIdAndUpdate(
@@ -147,6 +123,53 @@ router.put('/delete-profile-image', fetchUser, async (req, res) => {
   }
 });
 
+// ================= FORGOT PASSWORD ===================
+router.post("/forgot-password", [
+  body("email").isEmail().withMessage("Valid email is required"),
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: "Email not found" });
+
+    const token = crypto.randomBytes(32).toString("hex");
+    user.resetPasswordToken = token;
+    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+    await user.save();
+
+    const resetLink = `http://localhost:5173/reset-password/${token}`;
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const mailOptions = {
+      from: 'Namaste Paws <yourEmail@gmail.com>',
+      to: email,
+      subject: 'Reset Your Password - PrimeShoe Nepal',
+      html: `
+        <p>Hello ${user.name || 'User'},</p>
+        <p>You requested a password reset. Click the link below to reset it:</p>
+        <a href="${resetLink}">${resetLink}</a>
+        <p>This link will expire in 1 hour.</p>
+        <p>If you did not request this, please ignore it.</p>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Password reset link sent to email." });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 
 module.exports = router;

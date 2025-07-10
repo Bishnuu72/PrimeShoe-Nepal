@@ -57,6 +57,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
 app.use("/api/auth", require("./routes/Auth"));
 app.use("/api/product", upload.array("image"), require("./routes/Products"));
+// app.use("/api/auth/reset-password", require("./routes/Reset-password"));
 // app.use("/api/cart", require("./routes/Carts"));
 
 app.listen(port, () => {
