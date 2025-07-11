@@ -1,39 +1,39 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(""); // ✅ initialize properly
+  const navigate = useNavigate();
+
+  axios.defaults.withCredentials = true;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/forgot-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/forgot-password",
+        { email },
+        { withCredentials: true }
+      );
 
-      const data = await res.json();
-      if (res.ok) {
+      if (res.data.Status === "Success") {
         Swal.fire({
           icon: "success",
           title: "Email Sent",
           text: "Check your inbox for password reset instructions.",
-          confirmButtonColor: "#3085d6",
         });
-        setEmail("");
+        navigate("/login");
       } else {
         Swal.fire({
           icon: "error",
           title: "Failed",
-          text: data.error || "Something went wrong. Try again.",
+          text: res.data.message || "Something went wrong.",
         });
       }
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       Swal.fire({
         icon: "error",
         title: "Server Error",

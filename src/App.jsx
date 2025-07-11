@@ -130,7 +130,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/search/:searchQuery" element={<SearchResult mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password/:token" element={<ResetPassword />} />
+          <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
 
       </Routes>
       </ServicesData>

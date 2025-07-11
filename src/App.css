@@ -9,6 +9,25 @@
     margin-left: 20px;
 }
 
+.nav-link-underline {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link-underline::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+
+.nav-link-underline:hover::after {
+    width: 100%;
+}
 
 
 .pet-cart {

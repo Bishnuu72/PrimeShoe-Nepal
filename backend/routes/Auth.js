@@ -123,53 +123,85 @@ router.put("/delete-profile-image", fetchUser, async (req, res) => {
   }
 });
 
-// ================= FORGOT PASSWORD ===================
-router.post("/forgot-password", [
-  body("email").isEmail().withMessage("Valid email is required"),
-], async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
+// Forgot Password Route
+router.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
 
   try {
+    // Check if user exists
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: "Email not found" });
 
-    const token = crypto.randomBytes(32).toString("hex");
-    user.resetPasswordToken = token;
-    user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-    await user.save();
+    if (!user) {
+      return res.status(404).json({ Status: "User not existed" });
+    }
 
-    const resetLink = `http://localhost:5173/reset-password/${token}`;
+    // Generate JWT reset token
+    const token = jwt.sign({ id: user._id }, "heisagoodboy", {
+      expiresIn: "1d",
+    });
 
+    // Log the target email
+    console.log("Sending password reset email to:", email);
+
+    // Setup Nodemailer transporter
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.EMAIL_USER, // Your Gmail
+        pass: process.env.EMAIL_PASS, // Your Gmail App Password
       },
     });
 
+    const resetLink = `http://localhost:5173/reset-password/${user._id}/${token}`;
+
     const mailOptions = {
-      from: 'Namaste Paws <yourEmail@gmail.com>',
+      from: "PrimeShoe NP <process.env.EMAIL_USER>",
       to: email,
-      subject: 'Reset Your Password - PrimeShoe Nepal',
-      html: `
-        <p>Hello ${user.name || 'User'},</p>
-        <p>You requested a password reset. Click the link below to reset it:</p>
-        <a href="${resetLink}">${resetLink}</a>
-        <p>This link will expire in 1 hour.</p>
-        <p>If you did not request this, please ignore it.</p>
-      `,
+      subject: "Reset Your Password - PrimeShoe Nepal",
+      text: `
+        Hello ${user.name || 'User'},
+        You requested a password reset. Click the link below to reset it:
+        ${resetLink}
+        This link will expire in 1 hour.
+        If you did not request this, please ignore it.
+        `,
     };
 
-    await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: "Password reset link sent to email." });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
+    // Send the email
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.error("Error sending email:", error);
+        return res.status(500).json({ Status: "Email not sent", Error: error });
+      } else {
+        console.log("Email sent successfully:", info.response);
+        return res.status(200).json({ Status: "Success", Info: info.response });
+      }
+    });
+  } catch (error) {
+    console.error("Internal error:", error);
+    res.status(500).send("Internal Server Error");
   }
+});
+
+router.post("/reset-password/:id/:token", (req, res) => {
+  const { id, token } = req.params;
+  const { password } = req.body;
+
+  jwt.verify(token, "heisagoodboy", (err, decoded) => {
+    if (err) {
+      return res.json({ Status: "Error with token" });
+    } else {
+      bcrypt
+        .hash(password, 10)
+        .then((hash) => {
+          User.findByIdAndUpdate({ _id: id }, { password: hash })
+            .then((u) => res.send({ Status: "Success" }))
+            .catch((err) => res.send({ Status: err }));
+        })
+        .catch((err) => res.send({ Status: err }));
+    }
+  });
 });
 
 module.exports = router;

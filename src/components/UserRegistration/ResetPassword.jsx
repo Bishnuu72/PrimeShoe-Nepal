@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ResetPassword = () => {
-  const { token } = useParams(); // Extract token from URL
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const { id, token } = useParams();
   const navigate = useNavigate();
 
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  axios.defaults.withCredentials = true;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,87 +18,83 @@ const ResetPassword = () => {
     if (password !== confirmPassword) {
       return Swal.fire({
         icon: 'error',
-        title: 'Mismatch',
-        text: 'Passwords do not match!',
+        title: 'Password Mismatch',
+        text: 'Both passwords must match!',
+        confirmButtonColor: '#d33',
       });
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/reset-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ password, token }),
+      const res = await axios.post(`http://localhost:5000/api/auth/reset-password/${id}/${token}`, {
+        password,
       });
 
-      const data = await res.json();
-
-      if (res.ok) {
+      if (res.data.Status === 'Success') {
         Swal.fire({
           icon: 'success',
-          title: 'Success',
-          text: 'Your password has been reset successfully!',
+          title: 'Password Reset',
+          text: 'Your password has been successfully reset.',
+          confirmButtonColor: '#3085d6',
         });
-        navigate("/login");
+        navigate('/login');
       } else {
         Swal.fire({
           icon: 'error',
           title: 'Failed',
-          text: data.message || 'Password reset failed. Try again.',
+          text: res.data.message || 'Reset failed. Token may be expired.',
         });
       }
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       Swal.fire({
         icon: 'error',
         title: 'Server Error',
-        text: 'Something went wrong. Try again later.',
+        text: 'Something went wrong. Please try again later.',
       });
     }
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-      <div className="card p-4 shadow-lg" style={{ width: '100%', maxWidth: '450px', borderRadius: '15px' }}>
-        <h3 className="text-center text-primary mb-3">Reset Your Password</h3>
+    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh', background: '#f8f9fa' }}>
+      <div className="card p-4 shadow border-0" style={{ width: '100%', maxWidth: '460px', borderRadius: '16px' }}>
+        <h3 className="text-center text-primary mb-2">🔒 Reset Password</h3>
+        <p className="text-center text-muted mb-4">Create a new password to access your account.</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="newPassword" className="form-label">New Password</label>
             <input
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               className="form-control"
               id="newPassword"
+              placeholder="Enter new password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              placeholder="Enter new password"
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="confirmPassword" className="form-label">Confirm New Password</label>
-            <input
-              type={showPassword ? "text" : "password"}
-              className="form-control"
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              placeholder="Confirm new password"
             />
           </div>
 
-          <div className="form-check mb-3">
+          <div className="mb-3">
+            <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
             <input
-              className="form-check-input"
+              type={showPassword ? 'text' : 'password'}
+              className="form-control"
+              id="confirmPassword"
+              placeholder="Confirm new password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-check mb-4">
+            <input
               type="checkbox"
-              id="showPasswordCheck"
+              className="form-check-input"
+              id="showPassword"
               checked={showPassword}
               onChange={() => setShowPassword(!showPassword)}
             />
-            <label className="form-check-label" htmlFor="showPasswordCheck">
-              Show Password
-            </label>
+            <label className="form-check-label" htmlFor="showPassword">Show Password</label>
           </div>
 
           <button type="submit" className="btn btn-primary w-100">Reset Password</button>
