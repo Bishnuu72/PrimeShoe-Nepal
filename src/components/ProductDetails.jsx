@@ -12,7 +12,7 @@ const ProductDetails = () => {
     }
   return (
     <>
-      <div className="productdetails-page">
+      <div className="productdetails-page fcb-font">
         <div className='container'>
           <div className="row">
             <div className="col-md-6">

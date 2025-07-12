@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import Swal from 'sweetalert2';
 import ProductContext from '../Context/ProductContext';
 
 const SearchResult = ({ mode, cardText, cartToggleMode, cartMode }) => {
@@ -20,6 +19,13 @@ const SearchResult = ({ mode, cardText, cartToggleMode, cartMode }) => {
         text: `No results for "${searchQuery}"`,
         icon: 'warning',
         confirmButtonText: 'OK',
+        customClass: {
+        title: 'fcb-font',
+        popup: 'fcb-font',
+        htmlContainer: 'fcb-font',
+        confirmButton: 'fcb-font',
+        cancelButton: 'fcb-font'
+      }
       });
     }
   }, [product, searchQuery]);
@@ -29,7 +35,7 @@ const SearchResult = ({ mode, cardText, cartToggleMode, cartMode }) => {
   };
 
   return (
-    <div className={`product-details bg-${mode} text-${cardText}`}>
+    <div className={`product-details bg-${mode} text-${cardText} fcb-font`}>
       <div className="container">
         <div className="row">
           {product.length === 0 ? (

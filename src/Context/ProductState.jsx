@@ -74,6 +74,25 @@ const ProductState = (props) => {
     }
   };
 
+  //For only users products
+  const userProduct = async (searchQuery="") => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/product/allproduct?`,{
+        method: "GET",
+        headers: {
+          "Content-Type" : "application/json",
+          "auth-token" : localStorage.getItem("token"),
+        },
+      });
+      const data = await response.json();
+      setProduct(data);
+      console.log("Data from backend response", data);
+    } catch (error) {
+      console.log("error: ", error);
+      // res.status(500).send("Internal Server Error");
+    }
+  };
+
   //Edit Product
   const editProduct = async (id, updateData) => {
     const {name, description, price, instock} = updateData;
@@ -121,7 +140,7 @@ const ProductState = (props) => {
   };
 
   return (
-    <ProductContext.Provider value={{product, setProduct, state, dispatch, allProduct, editProduct, deleteProduct}}>
+    <ProductContext.Provider value={{product, setProduct, state, dispatch, allProduct,userProduct, editProduct, deleteProduct}}>
       {props.children}
 
     </ProductContext.Provider>

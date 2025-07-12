@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = (props) => {
   return (
-    <div className={`footer-section bg-${props.mode} text-${props.cardText}`}>
+    <div className={`footer-section bg-${props.mode} text-${props.cardText} fcb-font`}>
       <hr className={`footer-line text-${props.cardText}`} />
         <div className="container">
             <div className="row">

@@ -7,8 +7,12 @@ const userSchema = new Schema ({
     password: { type: String, required: true },
     address: { type: String },
     profileImage: { type: String }, // Base64 format
-    resetPasswordToken: { type: String },
-    resetPasswordExpires: { type: Date, default: Date.now },
+    country: { type: String },
+    dob: { type: String },
+    phone: { type: String },
+    state: {type: String},
+    // resetPasswordToken: { type: String },
+    // resetPasswordExpires: { type: Date, default: Date.now },
     date: { type: Date, default: Date.now}
 })
 

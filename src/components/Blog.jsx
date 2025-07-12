@@ -6,7 +6,7 @@ import Footer from './Footer';
 const Blog = ({mode, cardText}) => {
     let title = "My Blogs";
   return (
-<div className={`blog-page bg-${mode}`}>
+<div className={`blog-page bg-${mode} fcb-font`}>
        <SmallBanner title={title}/>
        <div className="container">
         <div className={`blog-details text-${cardText}`}>

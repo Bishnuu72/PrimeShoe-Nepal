@@ -6,7 +6,7 @@ import Footer from './Footer';
 const About = (props) => {
   let title = "About Us";
   return (
-    <div className={`about bg-${props.mode} text-${props.cardText}`}>
+    <div className={`about bg-${props.mode} text-${props.cardText} fcb-font`}>
       <SmallBanner title={title}/>
       <AboutContent />
     </div>

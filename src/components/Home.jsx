@@ -13,7 +13,7 @@ import ServicesHome from './ServicesHome';
 
 const Home = ({mode, cardText, cartToggleMode, cartMode, notify, toast, textColor, secColor }) => {
   return (
-    <>
+    <div className='fcb-font'>
     <Banner />
     <Services mode={mode} cardText={cardText} />
     <Product mode={mode} cardText={cardText} />
@@ -22,7 +22,7 @@ const Home = ({mode, cardText, cartToggleMode, cartMode, notify, toast, textColo
     {/* <Card mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} /> */}
     {/* <Form mode={mode} cardText={cardText} notify={notify} toast={toast} /> */}
     <ContactDetails mode={mode} cardText={cardText} textColor={textColor} secColor={secColor} />
-    </>
+    </div>
   )
 }
 

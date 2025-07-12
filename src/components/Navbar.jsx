@@ -40,11 +40,11 @@ const Navbar = ({ title, mode, toggleMode, text, loginToggleMode, loginText, log
   };
 
   return (
-    <div className={`bg-${mode} shadow-sm`}>
+    <div className={`bg-${mode} shadow-sm fcb-font`}>
       {/* Top Row */}
       <div className="container-fluid py-2 px-4 d-flex justify-content-between align-items-center border-bottom">
         {/* Left - Brand */}
-        <Link className="navbar-brand fs-4 fw-bold text-primary" to="/">
+        <Link className={`navbar-brand fs-4 fw-bold text-${loginMode}`} to="/">
           <i className="fa-solid fa-shoe-prints me-2"></i>{title}
         </Link>
 
@@ -113,16 +113,26 @@ const Navbar = ({ title, mode, toggleMode, text, loginToggleMode, loginText, log
           )}
 
           {/* Profile Icon */}
-          <Link to="/profile">
-            <button className={`btn btn-outline-${loginMode}`}>
-              <i className="fa-solid fa-user"></i>
-            </button>
-          </Link>
+          <button 
+            className={`btn btn-outline-${loginMode}`} 
+            onClick={() => {
+              const token = localStorage.getItem("token");
+              if (token) {
+                navigate("/profile");
+              } else {
+                toast.warn("Please log in to view your profile!");
+                navigate("/login");
+              }
+            }}
+          >
+            <i className="fa-solid fa-user"></i>
+          </button>
+
         </div>
       </div>
 
       {/* Bottom Row - Navigation */}
-      <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
+      <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode} nav-bar`}>
         <div className="container justify-content-center">
           <div className="collapse navbar-collapse show justify-content-center">
             <ul className="navbar-nav mb-2 mb-lg-0 d-flex justify-content-center">
@@ -159,6 +169,12 @@ const Navbar = ({ title, mode, toggleMode, text, loginToggleMode, loginText, log
               <li className="nav-item mx-3">
                 <Link 
                   className="nav-link nav-link-underline" 
+                  to="/faq-section">FAQs
+                </Link>
+              </li>
+              <li className="nav-item mx-3">
+                <Link 
+                  className="nav-link nav-link-underline" 
                   to="/about">About Us
                 </Link>
               </li>
@@ -185,6 +201,7 @@ const Navbar = ({ title, mode, toggleMode, text, loginToggleMode, loginText, log
           </div>
         </div>
       </nav>
+      {/* <hr style={{ margin: 0, borderTop: `2px solid ${mode === 'light' ? '#ccc' : '#fff'}` }} /> */}
     </div>
   );
 };

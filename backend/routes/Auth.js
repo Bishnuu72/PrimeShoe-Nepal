@@ -89,9 +89,9 @@ router.get("/getuser", fetchUser, async (req, res) => {
 router.put("/updateuser", fetchUser, upload.single("profileImage"), async (req, res) => {
   try {
     const userId = req.user.id;
-    const { name, email, address } = req.body;
+    const { name, email, address, country, dob, phone, state } = req.body;
 
-    const updateFields = { name, email, address };
+    const updateFields = { name, email, address, country, dob, phone, state };
     if (req.file) updateFields.profileImage = req.file.buffer.toString("base64");
 
     const updatedUser = await User.findByIdAndUpdate(

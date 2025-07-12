@@ -31,6 +31,7 @@ import Profile from './components/Dashboard/Profile.jsx';
 import SearchResult from './components/SearchResult.jsx';
 import ForgotPassword from './components/UserRegistration/ForgotPassword.jsx';
 import ResetPassword from './components/UserRegistration/ResetPassword.jsx';
+import FaqSection from './components/FaqSection.jsx';
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -47,7 +48,7 @@ function App() {
     if (mode === "dark") {
       setMode("light");
       setText(<i class="fa-solid fa-moon"></i>);
-      showAlert("Light Mode has been enabled", "success");
+      // showAlert("Light Mode has been enabled", "success");
       setCardText("dark");
       setLoginMode("dark");
       setTextColor("light");
@@ -55,7 +56,7 @@ function App() {
     }else {
       setMode("dark");
       setText(<i class="fa-solid fa-sun"></i>);
-      showAlert("Dark Mode has been enabled", "success");
+      // showAlert("Dark Mode has been enabled", "success");
       setCardText("light");
       setLoginMode("light");
       setTextColor("success");
@@ -131,6 +132,7 @@ function App() {
           <Route path="/search/:searchQuery" element={<SearchResult mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
+          <Route path="/faq-section" element={<FaqSection />} />
 
       </Routes>
       </ServicesData>

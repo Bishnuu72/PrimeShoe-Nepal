@@ -17,7 +17,7 @@ const Services = (props) => {
 
   return (
     <div>
-      <div className={`services-details bg-${props.mode} text-${props.cardText}`}>
+      <div className={`services-details bg-${props.mode} text-${props.cardText} fcb-font`}>
         <div className="container">
           <h3>Our Services</h3>
           <p>At Prime Shoe Nepal, we don't just sell shoes — we deliver a complete footwear experience. Here's what makes our services stand out:</p>

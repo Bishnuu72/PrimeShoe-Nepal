@@ -26,7 +26,7 @@ const News = (props) => {
 
   return (
     <>
-    <div className={`news-section bg-${props.mode} text-${props.cardText}`}>
+    <div className={`news-section bg-${props.mode} text-${props.cardText} fcb-font`}>
         <SmallBanner title={title} />
         <div className="container">
         <div className="row">
@@ -43,7 +43,7 @@ const News = (props) => {
                         <div className={`card-body bg-${props.mode} text-${props.cardText}`}>
                             <p>Author Name - {item.author} <br /> Published At - {item.publishedAt}</p>
                             <h4>{item.title}</h4>
-                            <p>{item.description}</p>
+                            {/* <p>{item.description}</p> */}
                             <a href={item.url} target="_blank" rel='noopener noreferrer' className='card-readmore' >Read More</a>
                         </div>
                     </div>
