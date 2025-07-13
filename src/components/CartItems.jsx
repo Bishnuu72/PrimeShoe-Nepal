@@ -3,7 +3,7 @@ import ProductContext from '../Context/ProductContext';
 import { MdDelete } from "react-icons/md";
 
 const CartItems = ({mode, cardText, secColor}) => {
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const context = useContext(ProductContext);
   const { state: { cart }, dispatch } = context;
 
@@ -99,7 +99,7 @@ const CartItems = ({mode, cardText, secColor}) => {
                       </div>
                       <div className="col-md-2 mb-3 cart-img">
                         <img
-                          src={item.image?.[0] ? `${BACKEND_URL}/uploads/${item.image[0]}` : "/imagenotfind.jpg"}
+                          src={item.image?.[0] ? `http://localhost:5000/uploads/${item.image[0]}` : "/imagenotfind.jpg"}
                           style={{ width: "100%", height: "100%", objectFit: "cover" }}
                           alt={item.name}
                         />

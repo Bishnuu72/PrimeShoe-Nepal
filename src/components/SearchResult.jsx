@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ProductContext from '../Context/ProductContext';
 
 const SearchResult = ({ mode, cardText, cartToggleMode, cartMode }) => {
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const { searchQuery } = useParams();
   const context = useContext(ProductContext);
 
@@ -51,7 +51,7 @@ const SearchResult = ({ mode, cardText, cartToggleMode, cartMode }) => {
                     onClick={() => handleProducts(item._id, item.name)}
                     src={
                       item.image?.[0]
-                        ? `${BACKEND_URL}/uploads/${item.image[0]}`
+                        ? `http://localhost:5000/uploads/${item.image[0]}`
                         : '/imagenotfound.jpg'
                     }
                     className="card-img-top"

@@ -5,7 +5,7 @@ import { BsThreeDots } from "react-icons/bs";
 import EditProductModal from './EditProductModal';
 
 const Product = ({ mode, cardText, cartToggleMode, cartMode }) => {
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
   const context = useContext(ProductContext);
   const params = useParams();
@@ -81,7 +81,7 @@ const Product = ({ mode, cardText, cartToggleMode, cartMode }) => {
                     onClick={() => handleProducts(item._id, item.name)}
                     src={
                       item.image?.[0]
-                        ? `${BACKEND_URL}/uploads/${item.image[0]}`
+                        ? `http://localhost:5000/uploads/${item.image[0]}`
                         : "/imagenotfound.jpg"
                     }
                     className="card-img-top"
