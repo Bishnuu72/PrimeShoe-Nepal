@@ -11,8 +11,6 @@ const userSchema = new Schema ({
     dob: { type: String },
     phone: { type: String },
     state: {type: String},
-    // resetPasswordToken: { type: String },
-    // resetPasswordExpires: { type: Date, default: Date.now },
     date: { type: Date, default: Date.now}
 })
 
