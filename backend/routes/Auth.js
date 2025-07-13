@@ -137,8 +137,8 @@ router.post("/forgot-password", async (req, res) => {
     }
 
     // Generate JWT reset token
-    const token = jwt.sign({ id: user._id }, "heisagoodboy", {
-      expiresIn: "1d",
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET , {
+      expiresIn: "1h",
     });
 
     // Log the target email
@@ -153,7 +153,7 @@ router.post("/forgot-password", async (req, res) => {
       },
     });
 
-    const resetLink = `http://localhost:5173/reset-password/${user._id}/${token}`;
+    const resetLink = `${FRONTEND_URL}/reset-password/${user._id}/${token}`;
 
     const mailOptions = {
       from: "PrimeShoe NP <process.env.EMAIL_USER>",
@@ -188,7 +188,7 @@ router.post("/reset-password/:id/:token", (req, res) => {
   const { id, token } = req.params;
   const { password } = req.body;
 
-  jwt.verify(token, "heisagoodboy", (err, decoded) => {
+  jwt.verify(token,process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       return res.json({ Status: "Error with token" });
     } else {

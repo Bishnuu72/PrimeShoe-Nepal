@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import ProductContext from '../Context/ProductContext';
 
 const ProductDetails = ({mode, cardText}) => {
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const params = useParams();
     const {itemname} = params;
     const {product} = useContext(ProductContext);
@@ -27,7 +28,7 @@ const ProductDetails = ({mode, cardText}) => {
             </div>
             <div className="col-md-6">
               <div className="pd-img">
-                <img src={items.image?.[0] ? `http://localhost:5000/uploads/${items.image[0]}` : "/imagenotfound.jpg"} alt={items.image} />
+                <img src={items.image?.[0] ? `${BACKEND_URL}/uploads/${items.image[0]}` : "/imagenotfound.jpg"} alt={items.image} />
               </div>
             </div>
           </div>

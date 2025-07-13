@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const AddProduct = () => {
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const [product, setProduct] = React.useState({
         name: "",
         description: "",
@@ -22,7 +23,7 @@ const AddProduct = () => {
         }
 
         try {
-            const response = await axios.post("http://localhost:5000/api/product/addproduct", formData, {
+            const response = await axios.post(`${BACKEND_URL}/api/product/addproduct`, formData, {
                 headers: {
                     "auth-token": localStorage.getItem("token"),
                 }

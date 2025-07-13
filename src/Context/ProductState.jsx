@@ -3,8 +3,8 @@ import ProductContext from './ProductContext'
 import { cartReducer } from './Reducer';
 
 const ProductState = (props) => {
-  // const BACKEND_URL = process.env.BACKEND_URL;
-  // const BACKEND_URL = import.meta.env.BACKEND_URL;
+  // const BACKEND_URL = process.env.VITE_BACKEND_URL;
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   const products = [
     {
@@ -58,7 +58,7 @@ const ProductState = (props) => {
   
   const allProduct = async (searchQuery="") => {
     try {
-      const response = await fetch(`http://localhost:5000/api/product/allhomeproduct?searchQuery=${searchQuery}`,{
+      const response = await fetch(`${BACKEND_URL}/api/product/allhomeproduct?searchQuery=${searchQuery}`,{
         method: "GET",
         headers: {
           "Content-Type" : "application/json",
@@ -77,7 +77,7 @@ const ProductState = (props) => {
   //For only users products
   const userProduct = async (searchQuery="") => {
     try {
-      const response = await fetch(`http://localhost:5000/api/product/allproduct?`,{
+      const response = await fetch(`${BACKEND_URL}/api/product/allproduct?`,{
         method: "GET",
         headers: {
           "Content-Type" : "application/json",
@@ -97,7 +97,7 @@ const ProductState = (props) => {
   const editProduct = async (id, updateData) => {
     const {name, description, price, instock} = updateData;
     try {
-      const response = await fetch(`http://localhost:5000/api/product/updateproduct/${id}`, 
+      const response = await fetch(`${BACKEND_URL}/api/product/updateproduct/${id}`,
         {
           method: "PUT",
           headers: {
@@ -119,7 +119,7 @@ const ProductState = (props) => {
   //Delete Product
   const deleteProduct = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/product/deleteproduct/${id}`,{
+      const response = await fetch(`${BACKEND_URL}/api/product/deleteproduct/${id}`,{
         method: "DELETE",
         headers: {
           "content-Type" : "application/json",

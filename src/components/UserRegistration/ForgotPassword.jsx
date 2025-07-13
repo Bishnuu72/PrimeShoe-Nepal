@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [email, setEmail] = useState(""); // ✅ initialize properly
   const navigate = useNavigate();
 
@@ -13,7 +14,7 @@ const ForgotPassword = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/forgot-password",
+        `${BACKEND_URL}/api/auth/forgot-password`,
         { email },
         { withCredentials: true }
       );
