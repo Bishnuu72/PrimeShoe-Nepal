@@ -15,7 +15,7 @@ const upload = multer({ storage });
 
 require("dotenv").config();
 const secret = process.env.JWT_SECRET;
-const FRONTEND_URL=process.env.VITE_FRONTEND_URL;
+// const FRONTEND_URL=process.env.VITE_FRONTEND_URL;
 
 // ================= CREATE USER ===================
 router.post("/createuser", [
@@ -155,7 +155,7 @@ router.post("/forgot-password", async (req, res) => {
       },
     });
 
-    const resetLink = `${FRONTEND_URL}/reset-password/${user._id}/${token}`;
+    const resetLink = `https://primeshoe-nepal.onrender.com/reset-password/${user._id}/${token}`;
 
     const mailOptions = {
       from: `PrimeShoe NP <${process.env.EMAIL_USER}>`,

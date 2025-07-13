@@ -39,7 +39,7 @@ const Profile = ({mode, cardText, secColor}) => {
       try {
         const token = localStorage.getItem('token');
         if (!token) return;
-        const res = await axios.get(`http://localhost:5000/api/auth/getuser`, {
+        const res = await axios.get(`https://primeshoe-nepal.onrender.com/api/auth/getuser`, {
           headers: { 'auth-token': token }
         });
         setUser(res.data);
@@ -102,7 +102,7 @@ const Profile = ({mode, cardText, secColor}) => {
       for (let key in formData) form.append(key, formData[key]);
       if (image) form.append('profileImage', image);
 
-      const res = await axios.put(`http://localhost:5000/api/auth/updateuser`, form, {
+      const res = await axios.put(`https://primeshoe-nepal.onrender.com/api/auth/updateuser`, form, {
         headers: {
           'auth-token': token,
           'Content-Type': 'multipart/form-data'
@@ -121,7 +121,7 @@ const Profile = ({mode, cardText, secColor}) => {
   const handleDeleteImage = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.put(`http://localhost:5000/api/auth/delete-profile-image`, {}, {
+      const res = await axios.put(`https://primeshoe-nepal.onrender.com/api/auth/delete-profile-image`, {}, {
         headers: { 'auth-token': token }
       });
       setUser(res.data.updatedUser);
@@ -134,7 +134,7 @@ const Profile = ({mode, cardText, secColor}) => {
   // ✅ Added fetchProducts function
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/product/allproduct`, {
+      const response = await fetch(`https://primeshoe-nepal.onrender.com/api/product/allproduct`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -355,7 +355,7 @@ const Profile = ({mode, cardText, secColor}) => {
                   <div className="card h-100 shadow-sm border-0 position-relative">
                     {product.image?.[0] ? (
                       <img
-                        src={`http://localhost:5000/uploads/${product.image[0]}`}
+                        src={`https://primeshoe-nepal.onrender.com/uploads/${product.image[0]}`}
                         alt={product.title}
                         className="card-img-top"
                         style={{ height: "250px", objectFit: "cover" }}

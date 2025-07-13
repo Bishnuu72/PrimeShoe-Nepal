@@ -26,7 +26,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const res = await axios.post(`http://localhost:5000/api/auth/reset-password/${id}/${token}`, {
+      const res = await axios.post(`https://primeshoe-nepal.onrender.com/api/auth/reset-password/${id}/${token}`, {
         password,
       });
 
