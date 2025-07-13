@@ -81,7 +81,7 @@ const Product = ({ mode, cardText, cartToggleMode, cartMode }) => {
                     onClick={() => handleProducts(item._id, item.name)}
                     src={
                       item.image?.[0]
-                        ? `https://primeshoe-nepal.onrender.com/uploads/${item.image[0]}`
+                        ? `http://localhost:5000/uploads/${item.image[0]}`
                         : "/imagenotfound.jpg"
                     }
                     className="card-img-top"

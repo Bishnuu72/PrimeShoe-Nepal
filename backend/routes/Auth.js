@@ -155,10 +155,10 @@ router.post("/forgot-password", async (req, res) => {
       },
     });
 
-    const resetLink = `https://primeshoe-nepal.onrender.com/reset-password/${user._id}/${token}`;
+    const resetLink = `http://localhost:5173/reset-password/${user._id}/${token}`;
 
     const mailOptions = {
-      from: `PrimeShoe NP <${process.env.EMAIL_USER}>`,
+      from: `PrimeShoe NP <process.env.EMAIL_USER>`,
       to: email,
       subject: "Reset Your Password - PrimeShoe Nepal",
       text: `

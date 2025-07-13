@@ -23,7 +23,7 @@ const AddProduct = () => {
         }
 
         try {
-            const response = await axios.post(`https://primeshoe-nepal.onrender.com/api/product/addproduct`, formData, {
+            const response = await axios.post(`http://localhost:5000/api/product/addproduct`, formData, {
                 headers: {
                     "auth-token": localStorage.getItem("token"),
                 }

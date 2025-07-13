@@ -22,7 +22,7 @@ const UserLogin = () => {
     const { email, password } = credential;
 
     try {
-      const response = await fetch(`https://primeshoe-nepal.onrender.com/api/auth/login`, {
+      const response = await fetch(`http://localhost:5000/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

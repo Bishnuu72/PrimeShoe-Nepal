@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
-  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  const [email, setEmail] = useState(""); // ✅ initialize properly
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
@@ -12,10 +11,22 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const lowerCaseEmail = email.trim().toLowerCase();
+
+    // ✅ Email format validation
+    const isValidEmail = /\S+@\S+\.\S+/.test(lowerCaseEmail);
+    if (!isValidEmail) {
+      return Swal.fire({
+        icon: "error",
+        title: "Invalid Email",
+        text: "Please enter a valid email address.",
+      });
+    }
+
     try {
       const res = await axios.post(
-        `https://primeshoe-nepal.onrender.com/api/auth/forgot-password`,
-        { email },
+        `http://localhost:5000/api/auth/forgot-password`,
+        { email: lowerCaseEmail },
         { withCredentials: true }
       );
 
@@ -35,11 +46,20 @@ const ForgotPassword = () => {
       }
     } catch (error) {
       console.error(error);
-      Swal.fire({
-        icon: "error",
-        title: "Server Error",
-        text: "Unable to send request. Please try again later.",
-      });
+
+      if (error.response && error.response.status === 404) {
+        Swal.fire({
+          icon: "error",
+          title: "Email Not Registered",
+          text: "This email is not associated with any account.",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Server Error",
+          text: "Unable to send request. Please try again later.",
+        });
+      }
     }
   };
 
