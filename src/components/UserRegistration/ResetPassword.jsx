@@ -71,6 +71,7 @@ const ResetPassword = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              style={{ fontFamily: "Poppins, sans-serif" }}
             />
           </div>
 
@@ -84,6 +85,7 @@ const ResetPassword = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
+              style={{ fontFamily: "Poppins, sans-serif" }}
             />
           </div>
 

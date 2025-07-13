@@ -79,6 +79,7 @@ const ForgotPassword = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              style={{ fontFamily: "Poppins, sans-serif" }}
             />
           </div>
           <button type="submit" className="btn btn-primary w-100">Send Reset Link</button>
