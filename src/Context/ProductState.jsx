@@ -58,7 +58,7 @@ const ProductState = (props) => {
   
   const allProduct = async (searchQuery="") => {
     try {
-      const response = await fetch(`http://localhost:5000/api/product/allhomeproduct?searchQuery=${searchQuery}`,{
+      const response = await fetch(`https://primeshoe-nepal.onrender.com/api/product/allhomeproduct?searchQuery=${searchQuery}`,{
         method: "GET",
         headers: {
           "Content-Type" : "application/json",
@@ -77,7 +77,7 @@ const ProductState = (props) => {
   //For only users products
   const userProduct = async (searchQuery="") => {
     try {
-      const response = await fetch(`http://localhost:5000/api/product/allproduct?`,{
+      const response = await fetch(`https://primeshoe-nepal.onrender.com/api/product/allproduct?`,{
         method: "GET",
         headers: {
           "Content-Type" : "application/json",
@@ -97,7 +97,7 @@ const ProductState = (props) => {
   const editProduct = async (id, updateData) => {
     const {name, description, price, instock} = updateData;
     try {
-      const response = await fetch(`http://localhost:5000/api/product/updateproduct/${id}`,
+      const response = await fetch(`https://primeshoe-nepal.onrender.com/api/product/updateproduct/${id}`,
         {
           method: "PUT",
           headers: {
@@ -119,7 +119,7 @@ const ProductState = (props) => {
   //Delete Product
   const deleteProduct = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/product/deleteproduct/${id}`,{
+      const response = await fetch(`https://primeshoe-nepal.onrender.com/api/product/deleteproduct/${id}`,{
         method: "DELETE",
         headers: {
           "content-Type" : "application/json",
