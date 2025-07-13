@@ -160,11 +160,11 @@ router.post("/forgot-password", async (req, res) => {
       to: email,
       subject: "Reset Your Password - PrimeShoe Nepal",
       text: `
-        Hello ${user.name || 'User'},
-        You requested a password reset. Click the link below to reset it:
-        ${resetLink}
-        This link will expire in 1 hour.
-        If you did not request this, please ignore it.
+      Hello ${user.name || 'User'},
+      You requested a password reset. Click the link below to reset it:
+      ${resetLink}
+      This link will expire in 1 hour.
+      If you did not request this, please ignore it.
         `,
     };
 
