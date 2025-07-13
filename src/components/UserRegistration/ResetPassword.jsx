@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const ResetPassword = () => {
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +26,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const res = await axios.post(`${BACKEND_URL}/api/auth/reset-password/${id}/${token}`, {
+      const res = await axios.post(`http://localhost:5000/api/auth/reset-password/${id}/${token}`, {
         password,
       });
 

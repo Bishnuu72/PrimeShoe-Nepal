@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const UserLogin = () => {
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const UserLogin = () => {
     const { email, password } = credential;
 
     try {
-      const response = await fetch(`${BACKEND_URL}/api/auth/login`, {
+      const response = await fetch(`http://localhost:5000/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
