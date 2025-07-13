@@ -55,7 +55,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh', background: '#f8f9fa' }}>
+    <div className="d-flex justify-content-center align-items-center fcb-font" style={{ minHeight: '100vh', background: '#f8f9fa' }}>
       <div className="card p-4 shadow border-0" style={{ width: '100%', maxWidth: '460px', borderRadius: '16px' }}>
         <h3 className="text-center text-primary mb-2">🔒 Reset Password</h3>
         <p className="text-center text-muted mb-4">Create a new password to access your account.</p>

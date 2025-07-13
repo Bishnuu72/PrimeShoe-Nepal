@@ -23,7 +23,8 @@ const AboutContent = (props) => {
                 </div>
                 <div className="col-md-5">
                     <div className="about1-img">
-                        <img src={bishnu} alt="pet-shop" />
+                        <img src={bishnu} alt="Founder Image" />
+                        <h5 className="img-name">Bishnu Kumar Yadav</h5>
                     </div>
                 </div>
                 <div className="col-md-6">

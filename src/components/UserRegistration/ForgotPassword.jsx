@@ -43,7 +43,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+    <div className="container d-flex justify-content-center align-items-center fcb-font" style={{ minHeight: "100vh" }}>
       <div className="card shadow-lg p-4" style={{ maxWidth: "450px", width: "100%", borderRadius: "15px" }}>
         <h3 className="text-center mb-3 text-primary">Forgot Password</h3>
         <p className="text-muted text-center mb-4">Enter your email to receive a reset link</p>

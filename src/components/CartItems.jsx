@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import ProductContext from '../Context/ProductContext';
 import { MdDelete } from "react-icons/md";
 
-const CartItems = () => {
+const CartItems = ({mode, cardText, secColor}) => {
   const context = useContext(ProductContext);
   const { state: { cart }, dispatch } = context;
 
@@ -44,8 +44,8 @@ const CartItems = () => {
   }, 0);
 
   return (
-    <div className='cart-items fcb-font'>
-      <div className="container mt-5">
+    <div className={`cart-items fcb-font bg-${mode} text-${cardText}`}>
+      <div className="container pt-5">
         <div className="productcontainer-cart">
           {cart.length === 0 ? (
             <div className="alert alert-info cart-empty" role="alert">
@@ -54,7 +54,7 @@ const CartItems = () => {
           ) : (
             <>
               <h3>My Shoes Cart</h3>
-              <p className='head-p'>
+              <p className={`head-p text-${cardText}`}>
                 I have <span className="cart-p">{cart.length}</span> shoes in my Cart
               </p>
 

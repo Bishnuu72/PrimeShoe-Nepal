@@ -25,7 +25,7 @@ const Services = (props) => {
             {services.map((service) =>{
               return(
               <div key={service._id} className="col-md-3" onClick={() =>handleServices(service._id, service.title)}>
-              <div className="services-icon">
+              <div className={`services-icon bg-${props.secColor} text-white`}>
                 <i className={service.icon}></i> <p>{service.title}</p>
               </div>
               </div>

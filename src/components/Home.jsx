@@ -15,7 +15,7 @@ const Home = ({mode, cardText, cartToggleMode, cartMode, notify, toast, textColo
   return (
     <div className='fcb-font'>
     <Banner />
-    <Services mode={mode} cardText={cardText} />
+    <Services mode={mode} cardText={cardText} secColor={secColor} />
     <Product mode={mode} cardText={cardText} />
     {/* <Product mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} /> */}
     <AboutContent mode={mode} cardText={cardText} />

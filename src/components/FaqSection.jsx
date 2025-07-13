@@ -1,6 +1,6 @@
 import React from "react";
 
-const FaqSection = () => {
+const FaqSection = ({mode, cardText, secColor}) => {
 
     const faqData = [
         {
@@ -38,12 +38,13 @@ const FaqSection = () => {
     ];
 
   return (
-    <div className="container my-5 fcb-font">
+    <div className={`faqs-section bg-${mode} text-${cardText}`}>
+    <div className="container fcb-font" style={{ paddingTop: "30px" }}>
       <h2 className="text-center mb-4">Frequently Asked Questions</h2>
       <div className="accordion" id="faqAccordion">
 
         {faqData.map((item, index) => (
-          <div className="accordion-item" key={index}>
+          <div className={`accordion-item bg-${secColor} text-${cardText}`} key={index}>
             <h2 className="accordion-header" id={`heading${index}`}>
               <button
                 className={`accordion-button ${index !== 0 ? 'collapsed' : ''}`}
@@ -68,6 +69,7 @@ const FaqSection = () => {
         ))}
 
       </div>
+    </div>
     </div>
   );
 };

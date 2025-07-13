@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { BsThreeDots } from 'react-icons/bs';
 import ProductContext from '../../Context/ProductContext';
 
-const Profile = () => {
+const Profile = ({mode, cardText, secColor}) => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     name: '', email: '', address: '', country: '', state: '', dob: '', phone: '', profileImage: ''
@@ -205,9 +205,9 @@ const Profile = () => {
 
 
   return (
-    <div className="container-fluid bg-dark-subtle min-vh-100 py-5 fcb-font">
+    <div className={`container-fluid bg-dark-subtle min-vh-100 py-5 fcb-font bg-${mode} text-${cardText}`}>
       <div className="container">
-        <div className="card shadow-lg p-5 rounded-4 border-0 mb-5">
+        <div className={`card shadow-lg p-5 rounded-4 border-0 mb-5 bg-${mode} text-${cardText}`}>
           <div className="text-center mb-4">
             <h2 className="text-uppercase text-primary fw-bold">Personal Information</h2>
           </div>
@@ -326,7 +326,7 @@ const Profile = () => {
         </div>
 
         {/* Profile - myProducts  */}
-        <div className="card shadow-sm p-4 rounded-4 border-0 bg-white">
+        <div className={`card shadow-sm p-4 rounded-4 border-0 bg-${mode} text-${cardText}`}>
           <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
             <h5 className="text-primary mb-0">My Products</h5>
             <div className="d-flex gap-2">

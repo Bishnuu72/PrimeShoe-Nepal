@@ -26,7 +26,7 @@ const UserLogin = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email: email.toLowerCase(), password }),
       });
 
       const data = await response.json();
@@ -64,7 +64,7 @@ const UserLogin = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container fcb-font'>
       <div className='row'>
         <div className='col-md-4'>
           <form onSubmit={handleSubmit} className='left-details'>

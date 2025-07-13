@@ -16,7 +16,7 @@ const ContactDetails = (props) => {
                     </div>
                 </div>
                 <div className="col-md-7">
-                    <div className={`contact-details bg-${props.textColor}`}>
+                    <div className={`contact-details bg-${props.secColor}`}>
                         <p>Please fill out the form below with your query or message. We strive to respond to all inquiries within 24 hours or before.</p>
                         <div className="contact-name">
                             <p>Your Name</p>

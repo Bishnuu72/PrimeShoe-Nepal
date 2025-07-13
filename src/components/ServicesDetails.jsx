@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import ServicesContext from '../Context/ServicesContext';
 
-const ServicesDetails = () => {
+const ServicesDetails = ({mode, cardText}) => {
     const params = useParams();
     const {servicetitle} = params;
     const services = useContext(ServicesContext);
@@ -12,7 +12,7 @@ const ServicesDetails = () => {
     }
 
   return (
-    <div className='service-details fcb-font'>
+    <div className={`service-details fcb-font bg-${mode} text-${cardText}`}>
     <div className='container'>
       <div className="row">
         <div className="col-md-6">

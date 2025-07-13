@@ -39,7 +39,7 @@ function App() {
   const [alert, setAlert] = useState(null);
   const [cardText, setCardText] = useState("dark");
   const [textColor, setTextColor] = useState("light");
-  const [secColor, setSecColor] = useState("white");
+  const [secColor, setSecColor] = useState("success");
   const [loginText, setLoginText] = useState("Notify");
   const [loginMode, setLoginMode] = useState("dark");
   const [cartMode, setCartMode] = useState("Add to cart");
@@ -52,15 +52,15 @@ function App() {
       setCardText("dark");
       setLoginMode("dark");
       setTextColor("light");
-      setSecColor("white");
+      setSecColor("success");
     }else {
       setMode("dark");
       setText(<i class="fa-solid fa-sun"></i>);
       // showAlert("Dark Mode has been enabled", "success");
       setCardText("light");
       setLoginMode("light");
-      setTextColor("success");
-      setSecColor("secondary");
+      setTextColor("dark");
+      setSecColor("danger");
     }
   };
 
@@ -111,7 +111,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home mode={mode} cardText={cardText} textColor={textColor} secColor={secColor} cartToggleMode={cartToggleMode} cartMode={cartMode} notify={notify} />} />
           <Route path="/products" element={<Product mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} />} />
-          <Route path="/services" element={<Services mode={mode} cardText={cardText} />} />
+          <Route path="/services" element={<Services mode={mode} cardText={cardText} secColor={secColor} />} />
           <Route path="/about" element={<About mode={mode} cardText={cardText} />} />
           <Route path="/blog" element={<Blog mode={mode} cardText={cardText} />} />
           <Route path="/contact" element={<Contact mode={mode} cardText={cardText} textColor={textColor} secColor={secColor} />} />
@@ -120,19 +120,19 @@ function App() {
           <Route path="/:id/:username/:age" element={<UserDetails />} />
           <Route path="/signup" element={<UserSignup />} />
           <Route path="/login" element={<UserLogin />} />
-          <Route path="/product/:itemname" element={<ProductDetails />} />
-          <Route path="/service/:servicetitle" element={<ServicesDetails />} />
-          <Route path="/cartitems" element={<CartItems />} />
+          <Route path="/product/:itemname" element={<ProductDetails mode={mode} cardText={cardText} />} />
+          <Route path="/service/:servicetitle" element={<ServicesDetails mode={mode} cardText={cardText} />} />
+          <Route path="/cartitems" element={<CartItems mode={mode} cardText={cardText} secColor={secColor} />} />
           <Route path="/addproduct" element={<AddProduct />} />
           <Route path="/companyform" element={<CompanyForm />} />
           <Route path="/blog1" element={<Blog1 />} />
           <Route path="/dogs" element={<Dogs />} />
           <Route path="/cats" element={<Cats />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile mode={mode} cardText={cardText} secColor={secColor} />} />
           <Route path="/search/:searchQuery" element={<SearchResult mode={mode} cardText={cardText} cartToggleMode={cartToggleMode} cartMode={cartMode} />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
-          <Route path="/faq-section" element={<FaqSection />} />
+          <Route path="/faq-section" element={<FaqSection mode={mode} cardText={cardText} secColor={secColor} />} />
 
       </Routes>
       </ServicesData>

@@ -17,16 +17,29 @@ const UserSignup = () => {
     setCredential({ ...credential, [e.target.name]: e.target.value });
   };
 
+  const isPasswordStrong = (password) => {
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
+    return regex.test(password);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const { name, email, password, cpassword } = credential;
 
     if (password !== cpassword) {
       return swal.fire({
         icon: 'error',
-        title: 'Oops...',
+        title: 'Password Mismatch',
         text: 'Passwords do not match!',
+      });
+    }
+
+    if (!isPasswordStrong(password)) {
+      return swal.fire({
+        icon: 'warning',
+        title: 'Weak Password',
+        html: 'Password must be at least <b>8 characters</b> long and include at least one <b>uppercase</b> letter, one <b>lowercase</b> letter, one <b>number</b>, and one <b>special character</b>.',
       });
     }
 
@@ -36,7 +49,7 @@ const UserSignup = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ name, email: email.toLowerCase(), password }),
       });
 
       const data = await response.json();
@@ -74,7 +87,7 @@ const UserSignup = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container fcb-font'>
       <div className='row'>
         <div className='col-md-3'>
           <div className='one-details'>
