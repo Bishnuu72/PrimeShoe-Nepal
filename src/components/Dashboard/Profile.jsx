@@ -370,7 +370,7 @@ const Profile = ({mode, cardText, secColor}) => {
                     )}
                     <div className="card-body">
                       <div className="d-flex justify-content-between align-items-start">
-                        <h5 className="card-title text-primary">{product.title}</h5>
+                        <h5 className="card-title text-primary">{product.name}</h5>
                         <div className="position-relative">
                           <BsThreeDots onClick={() => toggleMenu(product._id)} style={{ cursor: 'pointer' }} />
                           {menuVisible[product._id] && (
@@ -388,6 +388,10 @@ const Profile = ({mode, cardText, secColor}) => {
                       <p className="card-text text-muted">
                         {product.description?.substring(0, 100) || "No description"}
                       </p>
+
+                      {/* ✅ Added: In Stock Status */}
+                      <p className="card-text">In Stock: {product.instock}</p>
+
                       <p className="card-text fw-semibold text-dark">
                         Price: {product.price} /-
                       </p>
