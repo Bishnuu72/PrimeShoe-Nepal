@@ -17,7 +17,7 @@ dotenv.config(); // Load environment variables first
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://primeshoe-nepal.vercel.app"
+  "https://prime-shoe-nepal.vercel.app"
 ];
 
 app.use(cors({
