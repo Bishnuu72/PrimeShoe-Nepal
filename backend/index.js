@@ -38,11 +38,11 @@ app.use(express.json()); // Parse incoming JSON
 
 dbConnect(); // Connect to DB
 
-const port = process.env.PORT || 5000; // fallback if PORT undefined
+const port = process.env.PORT; // fallback if PORT undefined
 console.log("Server running on port:", port);
 
 // --- Health Check Route
-app.get('/system', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Hello This is ------> Apna System');
 });
 
@@ -85,5 +85,5 @@ app.use("/api/product", upload.array("image"), require("./routes/Products"));
 
 // --- Start server
 app.listen(port, () => {
-  console.log(`✅ Server listening at http://localhost:${port}`);
+  console.log(`✅ Server listening at ${port}`);
 });
