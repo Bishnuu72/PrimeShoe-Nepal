@@ -85,5 +85,5 @@ app.use("/api/product", upload.array("image"), require("./routes/Products"));
 
 // --- Start server
 app.listen(port, () => {
-  console.log(`✅ Server listening at ${port}`);
+  console.log(`Server listening at ${port}`);
 });
